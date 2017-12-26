@@ -19,34 +19,41 @@ li{
 }
 
 .topNavBar{
-    padding:20px 16px;
+    padding:20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
-.topNavBar>.logo{
+.topNavBar-inner{
+    padding: 0 16px;
+}
+.topNavBar .logo{
     float: left;
     line-height: 40px;
     font-size: 24px;
     font-family: 'Arial Black';
 }
-.topNavBar>.logo>.bo{
+.topNavBar .logo>.bo{
     margin-right: 2px;
     color: rgb(232, 103, 107);
 }
-.topNavBar>.logo>.wen{
+.topNavBar .logo>.wen{
     color: rgb(154, 157, 162);
 }
-.topNavBar>nav{
+.topNavBar nav{
     float: right;
     padding: 8px 0 2px;
 }
-.topNavBar>nav>ul{
+.topNavBar nav>ul{
     margin: 0;
     padding: 0;
 }
-.topNavBar>nav>ul>li{
+.topNavBar nav>ul>li{
     float: left;
     margin: 0 15px;
 }
-.topNavBar>nav>ul>li>a{
+.topNavBar nav>ul>li>a{
     display: block;
     color: rgba(255, 255, 255, 0.7);
     font-weight: 600;
@@ -55,12 +62,96 @@ li{
     border-bottom: 3px solid transparent;
     padding: 4px 0;
 }
-.topNavBar>nav>ul>li>a:hover{
+.topNavBar nav>ul>li>a:hover{
     border-bottom: 3px solid #e8676b;
 }
 
 .banner{
-    border:1px solid red;
-    background: url(./image/rs-cover-2-2-1-1) center center no-repeat;
-    height:500px;
+    background: url(../image/banner-bg2.jpg) center center no-repeat;
+    background-size: cover;
+    height: 500px;
 }
+.banner .mask{
+    background-color:  rgba(0,0,0,0.5);
+    height: 500px;
+}
+
+.userCard{
+    max-width: 930px;
+    margin: 0 auto;
+    background: #fff;
+}
+.userCard .profile{
+    padding:60px 60px 20px 60px;;
+}
+.userCard .profile>.picture{
+    float: left
+}
+.userCard .profile>.information{
+    float: left;
+    margin-left: 90px;
+    width: 460px;
+}
+.userCard .profile>.information>.welcome{
+    display: inline-block;
+    padding: 3px 6px;
+    background: rgb(232, 103, 107);
+    color: #fff;
+    font-weight: 600;
+    position: relative;
+}
+.userCard .profile>.information>.welcome>.triangle{
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 4px;
+    border: 5px solid transparent;
+    width: 0;
+    border-top-color: rgb(232, 103, 107);
+    border-left-color: rgb(232, 103, 107);
+}
+.userCard .profile>.information>h1{
+    margin:30px 0 6px;
+}
+.userCard .profile>.information>hr{
+    border: none;
+    border-top: 1px solid rgb(222, 222, 222);
+    margin:20px 0;
+}
+.userCard .profile>.information>dl>dt{
+    float: left;
+    width: 30%;
+    padding:5px 0;
+    font-weight: 600;
+    color: rgb(51, 51, 51);
+}
+.userCard .profile>.information>dl>dd{
+    float: left;
+    width: 70%;
+    padding:5px 0;
+    color: rgb(157, 160, 167);
+}
+.userCard .media{
+    padding:20px 0;
+    background: rgb(232, 103, 107);
+    text-align: center;
+}
+.userCard .media>a{
+    display: inline-block;
+    padding: 6px;
+    border-radius: 50%;
+    margin: 0 30px;
+}
+.userCard .media>a:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+.userCard .media>a>.icon{
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    text-align: center;
+}
+
+
+
+

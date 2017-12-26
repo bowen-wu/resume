@@ -1,46 +1,78 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>吴博文</title>
     <link rel="stylesheet" href="./css/style.css">
+    <style type="text/css">
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+    <script src='//at.alicdn.com/t/font_521534_cqwb58p2x8mmquxr.js'></script>
 </head>
+
 <body>
     <div class='topNavBar clearfix'>
-        <a class='logo' href='#' alt='logo'>
-            <span class='bo'>Bo</span><!--
-            --><span class='wen'>wen</span>
-        </a>
-        <nav>
-            <ul class='clearfix'>
-                <li><a href='#'>关于</a></li>
-                <li><a href='#'>技能</a></li>
-                <li><a href='#'>作品</a></li>
-                <li><a href='#'>博客</a></li>
-                <li><a href='#'>日历</a></li>
-                <li><a href='#'>联系方式</a></li>
-                <li><a href='#'>其他</a></li>
-            </ul>
-        </nav>
+        <div class='topNavBar-inner'>
+            <a class='logo' href='#' alt='logo'>
+                <span class='bo'>Bo</span>
+                <!--
+                -->
+                <span class='wen'>wen</span>
+            </a>
+            <nav>
+                <ul class='clearfix'>
+                    <li>
+                        <a href='#'>关于</a>
+                    </li>
+                    <li>
+                        <a href='#'>技能</a>
+                    </li>
+                    <li>
+                        <a href='#'>作品</a>
+                    </li>
+                    <li>
+                        <a href='#'>博客</a>
+                    </li>
+                    <li>
+                        <a href='#'>日历</a>
+                    </li>
+                    <li>
+                        <a href='#'>联系方式</a>
+                    </li>
+                    <li>
+                        <a href='#'>其他</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </div>
 
     <div class='banner'>
-        <img src='./image/rs-cover-2-2-1-1' alt='bg'>
+        <div class="mask"></div>
     </div>
 
     <main>
-        <div class='card'>
-            <div class='profile'>
+        <div class='userCard'>
+            <div class='profile clearfix'>
 
                 <div class='picture'>
-                    <img src='#' alt='头像'>
+                    <img height=350 width=250 src='./image/avatar.jpg' alt='头像'>
                 </div>
 
                 <div class='information'>
-                    <span class='welcome'>HELLO</span>
+                    <span class='welcome'>HELLO
+                        <span class='triangle'></span>
+                    </span>
                     <h1>吴博文</h1>
                     <p>web前端开发工程师</p>
                     <hr>
-                    <dl>
+                    <dl class='clearfix'>
                         <dt>AGE</dt>
                         <dd>23</dd>
                         <dt>SEX</dt>
@@ -58,14 +90,39 @@
             </div>
 
             <footer class='media'>
-                <a href='#'><img src='#' alt='...'></a>
+                <a href='#'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-icongithub"></use>
+                    </svg>
+                </a>
+                <a href='#'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu_circle"></use>
+                    </svg>
+                </a>
+                <a href='#'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-university"></use>
+                    </svg>
+                </a>
+                <a href='#'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jirengulogojichu1"></use>
+                    </svg>
+                </a>
+                <a href='#'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
             </footer>
         </div>
 
         <a href='#'>DOWNLOAD SUM</a>
 
-        <p>吴博文，web前端工程师<br>
-        技能：前端开发，Node.js开发</p>
+        <p>吴博文，web前端工程师
+            <br> 技能：前端开发，Node.js开发
+        </p>
     </main>
 
     <section>
@@ -99,4 +156,5 @@
 
     </section>
 </body>
+
 </html>
