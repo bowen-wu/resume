@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    background: rgba(44, 51, 64, 0.8);
+    background: #efefef;
 }
 a{
     text-decoration: none;
@@ -55,4 +55,10 @@ li{
 }
 .topNavBar>nav>ul>li>a:hover{
     border-bottom: 3px solid #e8676b;
+}
+
+.banner{
+    border:1px solid red;
+    background: url(./image/banner-bg1.jpg) center center no-repeat;
+    height:500px;
 }
