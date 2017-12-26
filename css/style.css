@@ -55,7 +55,7 @@ li{
 }
 .topNavBar nav>ul>li>a{
     display: block;
-    color: rgba(255, 255, 255, 0.7);
+    color: #b7b7b7;
     font-weight: 600;
     font-size: 12px;
     border-top: 3px solid transparent;
