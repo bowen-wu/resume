@@ -283,3 +283,11 @@ section > .skills > li:nth-child(even){
     width: 100px;
     margin-left: 135px;
 }
+.portfolio > .works{
+    position: relative;
+    margin-top: 40px;
+    height: 597px;
+}
+.portfolio > .works > div{
+    position: absolute;
+}
