@@ -5,13 +5,6 @@
     <title>吴博文</title>
     <link rel="stylesheet" href="./css/style.css">
     <style type="text/css">
-        .icon {
-            width: 1em;
-            height: 1em;
-            vertical-align: -0.15em;
-            fill: currentColor;
-            overflow: hidden;
-        }
     </style>
     <script src='//at.alicdn.com/t/font_521534_cqwb58p2x8mmquxr.js'></script>
 </head>
@@ -20,10 +13,8 @@
     <div class='topNavBar clearfix'>
         <div class='topNavBar-inner'>
             <a class='logo' href='#' alt='logo'>
-                <span class='bo'>Bo</span>
-                <!--
-                -->
-                <span class='wen'>wen</span>
+                <span class='bo'>Bo</span><!--
+                --><span class='wen'>wen</span>
             </a>
             <nav>
                 <ul class='clearfix'>
@@ -117,35 +108,68 @@
                 </a>
             </footer>
         </div>
-
-        <a href='#'>DOWNLOAD SUM</a>
-
-        <p>吴博文，web前端工程师
-            <br> 技能：前端开发，Node.js开发
+        <p class="download-outer">
+            <a class="download" href='./吴博文' alt="个人简历" download>下载 PDF 简历</a>
         </p>
+
+        <p class="selfIntroduction">吴博文，web前端工程师
+            <br> 技能：前端开发，Vue.js全家桶开发，Node.js开发</p>
     </main>
 
     <section>
-        <h2>技能：</h2>
-        <ol>
-            <li>HTML 5 &#38; CSS 3</li>
-            <li>JavaScript</li>
-            <li>jQuery</li>
-            <li>Vue</li>
-            <li>React</li>
-            <li>HTTP</li>
+        <h2 class="sectionTitle">技能</h2>
+        <ol class="skills clearfix">
+            <li>
+                <span>HTML 5 &#38; CSS 3</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner"></div>
+                </div>
+            </li>
+            <li>
+                <span>JavaScript</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner"></div>
+                </div>
+            </li>
+            <li>
+                <span>jQuery</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner" style="width: 95%;"></div>
+                </div>
+            </li>
+            <li>
+                <span>Vue</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner" style="width: 85%;"></div>
+                </div>
+            </li>
+            <li>
+                <span>React</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner" style="width: 80%;"></div>
+                </div>
+            </li>
+            <li>
+                <span>HTTP</span>
+                <div class="skillBar">
+                    <div class="shillBar-inner" style="width: 80%;"></div>
+                </div>
+            </li>
         </ol>
     </section>
 
-    <section>
-        <h2>作品集</h2>
+    <section class="portfolio">
+        <h2 class="sectionTitle">作品集</h2>
 
         <nav>
-            <ol>
-                <li>所有</li>
-                <li>框架</li>
-                <li>原生JS &#38；CSS</li>
+            <ol class="clearfix">
+                <li id="portfolioAll">所有</li>
+                <li id="portfolioFrame">框架</li>
+                <li id="portfolioProtogenesis">原生JS &#38; CSS</li>
             </ol>
+            <div class="sliderBar">
+                <div id="portfolioBar" class="sliderBar-inner sliderBarStateFirst"></div>
+            </div>
         </nav>
 
         <div class='jobs'>
@@ -155,6 +179,8 @@
         </div>
 
     </section>
+
+    <script src="./js/main.js"></script>
 </body>
 
 </html>
