@@ -6,37 +6,23 @@ window.onload = function(){
     let topNavBarATag = document. querySelectorAll('.topNavBar nav>ul>li>a');
     for(let i=0, len=topNavBarLis.length; i<len; i++){
         topNavBarLis[i].onmouseenter = function(event){
-            event.currentTarget.classList.add('mouseEventActive');
+            event.currentTarget.classList.add('active');
         }
         topNavBarLis[i].onmouseleave = function(event){
-            event.currentTarget.classList.remove('mouseEventActive');
+            event.currentTarget.classList.remove('active');
         }
         topNavBarLis[i].onclick = function(event){
-            event.preventDefault();
-            let siblings = event.currentTarget.parentNode.childNodes;
-            let allEleChilds = filterElementNode(siblings,'multi');
-            for(let i=0,len=allEleChilds.length;i<len;i++){
-                allEleChilds[i].classList.remove("clickEventActive");
-            }
-            event.currentTarget.classList.add("clickEventActive");
-            let topNavBarATagClick = filterElementNode(event.currentTarget.childNodes,'single');
-            let topNavBarATagClickHref = topNavBarATagClick.getAttribute('href');
-            let mainSection = document.querySelector(topNavBarATagClickHref);
-            if (mainSection !== null) {
-                let mainSectionOffsetTop = mainSection.offsetTop;
-                window.scrollTo(0, mainSectionOffsetTop - 100);
-            }else {
-                return;
-            }
+            topNavBarClickEvent(event);
         }
     }
+    
     
     window.onscroll = function () {
         var scrollHeight = window.scrollY;
         if (scrollHeight > 50) {
-            topNavBar.classList.add('active');
+            topNavBar.classList.add('sticky');
         } else {
-            topNavBar.classList.remove('active');
+            topNavBar.classList.remove('sticky');
         }
         let scrollEles = document.getElementsByClassName('scrollClass');
         for(let i=0,len=scrollEles.length;i<len;i++){
@@ -44,13 +30,15 @@ window.onload = function(){
             let currentEleOffsetTop = currentEle.offsetTop;
             let currentEleHeight = currentEle.offsetHeight;
             if(scrollHeight > currentEleOffsetTop-100 || scrollHeight > currentEleOffsetTop + currentEleHeight-100){
+                console.log('scrollHeight',scrollHeight);
+                console.log('currentEleOffsetTop-100',currentEleOffsetTop-100);
                 for(let i=0,len=topNavBarATag.length;i<len;i++){
                     let topNavBarATagHrefScroll = topNavBarATag[i].getAttribute('href');
                     if('#' + currentEle.id === topNavBarATagHrefScroll){
                         for(let i=0,len=topNavBarLis.length;i<len;i++){
-                            topNavBarLis[i].classList.remove('scrollEventActive');
+                            topNavBarLis[i].classList.remove('clickScrollActive');
                         }
-                        topNavBarATag[i].parentNode.classList.add('scrollEventActive');
+                        topNavBarATag[i].parentNode.classList.add('clickScrollActive');
                     }
                 }
             }else{
@@ -58,8 +46,6 @@ window.onload = function(){
             }
         }
     }
-
-
 
 
 
@@ -85,23 +71,32 @@ window.onload = function(){
             loading.classList.add('active');
         },2500)
     }
-    // 筛选单个元素节点
-    function filterElementNode(nodes,num){
-        if(num === 'single'){
-            var node=null;
-            for(let i=0, len=nodes.length;i<len;i++){
-                if(nodes[i].nodeType === 1){
-                    node = nodes[i];
-                    break;
-                }
-            }
+
+    function topNavBarClickEvent(event){
+        event.preventDefault();
+        for (let i = 0, len = topNavBarLis.length; i < len; i++) {
+            topNavBarLis[i].classList.remove("clickScrollActive");
         }
-        if(num === 'multi'){
-            var node=[];
-            for(let i=0, len=nodes.length;i<len;i++){
-                if(nodes[i].nodeType === 1){
-                    node.push(nodes[i]);
-                }
+        event.currentTarget.classList.add("clickScrollActive");
+        let topNavBarATagClickHref = event.target.getAttribute('href');
+        let mainSection = document.querySelector(topNavBarATagClickHref);
+        if (mainSection !== null) {
+            let mainSectionOffsetTop = mainSection.offsetTop;
+            window.scrollTo(0, mainSectionOffsetTop - 99);
+        }
+    }
+    // 筛选元素节点
+    function filterElementNode(nodes, num) {
+        switch (num){
+            case 'single':var node = null;break;
+            case 'multi':var node = [];break;
+        }
+        for (let i = 0, len = nodes.length; i < len; i++) {
+            if (nodes[i].nodeType === 1 && num === 'single') {
+                node = nodes[i];
+                break;
+            } else if (nodes[i].nodeType === 1 && num === 'multi') {
+                node.push(nodes[i]);
             }
         }
         return node;

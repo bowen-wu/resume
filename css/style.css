@@ -82,7 +82,7 @@ h1,h2,h3,h4,h5,h6{
     color: #b7b7b7;
     transition: all 0.3s;
 }
-.topNavBar.active{
+.topNavBar.sticky{
     padding: 10px 0;
     background-color: #fff;
     color: #3d4451;
@@ -133,11 +133,17 @@ h1,h2,h3,h4,h5,h6{
 
 
 
-.topNavBar nav>ul>li.mouseEventActive>a::after,
-.topNavBar nav>ul>li.clickEventActive>a::after,
-.topNavBar nav>ul>li.scrollEventActive>a::after,
+.topNavBar nav>ul>li.active>a::after,
+.topNavBar nav>ul>li.clickScrollActive>a::after,
 .topNavBar nav>ul>li.hightLight>a::after{
     background-color: #E8676B;
+    content: '';
+    display: block;
+    margin-top: 4px;
+    margin-right:100%;
+    height: 3px;
+    width: 100%;
+    border-radius: 2px;
     animation: topNavBarUnderLineAppear 0.2s;
 }
 @keyframes topNavBarUnderLineAppear{
@@ -148,18 +154,9 @@ h1,h2,h3,h4,h5,h6{
     0%{ width: 100%; }
     100%  { width: 0%; }
 } */
-.topNavBar nav>ul>li>a::after{
-    content: '';
-    display: block;
-    margin-top: 4px;
-    margin-right:100%;
-    height: 3px;
-    width: 100%;
-    border-radius: 2px;
-    /* animation: topNavBarUnderLineDisappear 0.2s; */
-}
 
-.topNavBar nav>ul>li.mouseEventActive>.secondLevelMenu{
+
+.topNavBar nav>ul>li.active>.secondLevelMenu{
     display: block;
     margin-right: 0;
 }
