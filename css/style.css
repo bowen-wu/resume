@@ -48,7 +48,6 @@ h1,h2,h3,h4,h5,h6{
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 .loading-outer.active{
     display: none;
@@ -131,24 +130,36 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 3px solid transparent;
     padding: 4px 0;
 }
+
+
+
+.topNavBar nav>ul>li.mouseEventActive>a::after,
+.topNavBar nav>ul>li.clickEventActive>a::after,
+.topNavBar nav>ul>li.scrollEventActive>a::after,
+.topNavBar nav>ul>li.hightLight>a::after{
+    background-color: #E8676B;
+    animation: topNavBarUnderLineAppear 0.2s;
+}
+@keyframes topNavBarUnderLineAppear{
+    0%  { width: 0%; }
+    100%{ width: 100%; }
+}
+/* @keyframes topNavBarUnderLineDisappear{
+    0%{ width: 100%; }
+    100%  { width: 0%; }
+} */
 .topNavBar nav>ul>li>a::after{
     content: '';
     display: block;
     margin-top: 4px;
+    margin-right:100%;
     height: 3px;
     width: 100%;
-    background-color: transparent;
     border-radius: 2px;
+    /* animation: topNavBarUnderLineDisappear 0.2s; */
 }
-@keyframes topNavBarContent{
-    0%  { width: 0%; }
-    100%{ width: 100%; }
-}
-.topNavBar nav>ul>li:hover>a::after{
-    background-color: #E8676B;
-    animation: topNavBarContent 0.3s;
-}
-.topNavBar nav>ul>li:hover>.secondLevelMenu{
+
+.topNavBar nav>ul>li.mouseEventActive>.secondLevelMenu{
     display: block;
     margin-right: 0;
 }
@@ -166,12 +177,9 @@ h1,h2,h3,h4,h5,h6{
     margin-right: 100%;
     margin-top: -7px;
     font-size: 12px;
-    animation: secondLevelMenu 0.3s linear; 
+    animation: secondLevelMenu 0.2s; 
 }
-@keyframes secondLevelMenu{
-    0%  { margin-right: 100%; }
-    100%{ margin-right: 0; }
-}
+
 .topNavBar nav>ul>li>.secondLevelMenu>li{
     padding: 8px 20px;
 }
@@ -180,6 +188,14 @@ h1,h2,h3,h4,h5,h6{
     background-color: #eee;
     color: #E8676B;
 }
+@keyframes secondLevelMenu{
+    0%  { margin-right: 100%; }
+    100%{ margin-right: 0; }
+}
+
+
+
+
 
 .banner{
     background: url(../image/banner-bg2.jpg) center center no-repeat;
