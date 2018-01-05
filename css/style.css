@@ -17,7 +17,7 @@ h1,h2,h3,h4,h5,h6{
     font-weight: normal;
 }
 .clearfix::after{
-    content: '';
+    content: "";
     display: block;
     clear: both;
 }
@@ -29,6 +29,50 @@ h1,h2,h3,h4,h5,h6{
     overflow: hidden;
 }
 
+.loading-outer{
+    display: flex;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+} 
+.loading{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.loading-outer.active{
+    display: none;
+}
+.loading::before,
+.loading::after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: #AFAFAF;
+    border-radius: 50%;
+    animation: loadingAnimation 1.8s linear infinite;
+}
+.loading::after{
+    animation-delay: 0.9s;
+}
+@keyframes loadingAnimation{
+    0%   { width: 0; height: 0; opacity: 1; }
+    100% { width: 80px; height: 80px; opacity: 0; }
+}
+
+
 .topNavBar{
     padding:20px 0;
     position: fixed;
@@ -36,6 +80,17 @@ h1,h2,h3,h4,h5,h6{
     left: 0;
     width: 100%;
     z-index: 1;
+    color: #b7b7b7;
+    transition: all 0.3s;
+}
+.topNavBar.active{
+    padding: 10px 0;
+    background-color: #fff;
+    color: #3d4451;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.3);
+}
+.topNavBar.active nav{
+    padding: 8px 0 2px;
 }
 .topNavBar-inner{
     padding: 0 16px;
@@ -44,7 +99,7 @@ h1,h2,h3,h4,h5,h6{
     float: left;
     line-height: 40px;
     font-size: 24px;
-    font-family: 'Arial Black';
+    font-family: "Arial Black";
 }
 .topNavBar .logo>.bo{
     margin-right: 2px;
@@ -55,7 +110,8 @@ h1,h2,h3,h4,h5,h6{
 }
 .topNavBar nav{
     float: right;
-    padding: 8px 0 2px;
+    padding: 8px 10px 2px;
+    transition: all 0.3s;
 }
 .topNavBar nav>ul{
     margin: 0;
@@ -64,29 +120,75 @@ h1,h2,h3,h4,h5,h6{
 .topNavBar nav>ul>li{
     float: left;
     margin: 0 15px;
+    position: relative;
 }
 .topNavBar nav>ul>li>a{
     display: block;
-    color: #b7b7b7;
     font-weight: 600;
     font-size: 12px;
+    color: inherit;
     border-top: 3px solid transparent;
     border-bottom: 3px solid transparent;
     padding: 4px 0;
 }
-.topNavBar nav>ul>li>a:hover{
-    border-bottom: 3px solid #e8676b;
+.topNavBar nav>ul>li>a::after{
+    content: '';
+    display: block;
+    margin-top: 4px;
+    height: 3px;
+    width: 100%;
+    background-color: transparent;
+    border-radius: 2px;
 }
-
+@keyframes topNavBarContent{
+    0%  { width: 0%; }
+    100%{ width: 100%; }
+}
+.topNavBar nav>ul>li:hover>a::after{
+    background-color: #E8676B;
+    animation: topNavBarContent 0.3s;
+}
+.topNavBar nav>ul>li:hover>.secondLevelMenu{
+    display: block;
+    margin-right: 0;
+}
+.topNavBar nav>ul>li>.secondLevelMenu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 10px 0;
+    background-color: #fff;
+    color: #2D3540;
+    box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    text-align: right;
+    margin-right: 100%;
+    margin-top: -7px;
+    font-size: 12px;
+    animation: secondLevelMenu 0.3s linear; 
+}
+@keyframes secondLevelMenu{
+    0%  { margin-right: 100%; }
+    100%{ margin-right: 0; }
+}
+.topNavBar nav>ul>li>.secondLevelMenu>li{
+    padding: 8px 20px;
+}
+.topNavBar nav>ul>li>.secondLevelMenu>li:hover{
+    cursor: pointer;
+    background-color: #eee;
+    color: #E8676B;
+}
 
 .banner{
     background: url(../image/banner-bg2.jpg) center center no-repeat;
     background-size: cover;
-    height: 500px;
+    height: 520px;
 }
 .banner .mask{
     background-color:  rgba(0,0,0,0.5);
-    height: 500px;
+    height: 520px;
 }
 
 
@@ -191,7 +293,7 @@ main{
 }
 
 .selfIntroduction{
-    font-family: 'kaiti';
+    font-family: "kaiti";
     font-size: 20px;
     font-weight: 600;
     text-align: center;

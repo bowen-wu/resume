@@ -6,64 +6,85 @@
     <link rel="stylesheet" href="./css/style.css">
     <style type="text/css">
     </style>
-    <script src='//at.alicdn.com/t/font_521534_cqwb58p2x8mmquxr.js'></script>
+    <script src="//at.alicdn.com/t/font_521534_cqwb58p2x8mmquxr.js"></script>
 </head>
 
 <body>
-    <div class='topNavBar clearfix'>
-        <div class='topNavBar-inner'>
-            <a class='logo' href='#' alt='logo'>
-                <span class='bo'>Bo</span><!--
-                --><span class='wen'>wen</span>
+    <div id="loading" class="loading-outer">
+        <div class="loading"></div>
+    </div>
+    <div id="topNavBar" class="topNavBar clearfix">
+        <div class="topNavBar-inner">
+            <a class="logo" href="#" alt="logo">
+                <span class="bo">Bo</span><!--
+                --><span class="wen">wen</span>
             </a>
             <nav>
-                <ul class='clearfix'>
+                <ul class="clearfix">
                     <li>
-                        <a href='#'>关于</a>
+                        <a href="#websiteAbout">关于</a>
                     </li>
                     <li>
-                        <a href='#'>技能</a>
+                        <a href="#websiteSkills">技能</a>
+                        <ul  class="secondLevelMenu">
+                            <li>HTML && CSS</li>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                            <li>Vue && React</li>
+                        </ul>
                     </li>
                     <li>
-                        <a href='#'>作品</a>
+                        <a href="#websiteWorks">作品</a>
+                        <ul class="secondLevelMenu">
+                            <li>Website Navigation</li>
+                             <li>Drawing Board</li>
+                            <li>Myself resume</li>
+                             <li>敬请期待</li>
+                            <li>敬请期待</li>
+                            <li>敬请期待</li>
+                        </ul> 
                     </li>
                     <li>
-                        <a href='#'>博客</a>
+                        <a href="#websiteGlob">博客</a>
+                        <ul class="secondLevelMenu">
+                            <li>简书</li>
+                            <li>知乎</li>
+                        </ul>
                     </li>
                     <li>
-                        <a href='#'>日历</a>
+                        <a href="#websiteCalendar">日历</a>
                     </li>
                     <li>
-                        <a href='#'>联系方式</a>
+                        <a href="#websiteContact">联系方式</a>
                     </li>
                     <li>
-                        <a href='#'>其他</a>
+                        <a href="#wensiteOther">其他</a>
                     </li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <div class='banner'>
+    <div class="banner">
         <div class="mask"></div>
     </div>
 
-    <main>
-        <div class='userCard'>
-            <div class='profile clearfix'>
+    <main id="websiteAbout">
+        <div class="userCard">
+            <div class="profile clearfix">
 
-                <div class='picture'>
-                    <img height=350 width=250 src='./image/avatar.jpg' alt='头像'>
+                <div class="picture">
+                    <img height=350 width=250 src="./image/avatar.jpg" alt="头像">
                 </div>
 
-                <div class='information'>
-                    <span class='welcome'>HELLO
-                        <span class='triangle'></span>
+                <div class="information">
+                    <span class="welcome">HELLO
+                        <span class="triangle"></span>
                     </span>
                     <h1>吴博文</h1>
                     <p>web前端开发工程师</p>
                     <hr>
-                    <dl class='clearfix'>
+                    <dl class="clearfix">
                         <dt>AGE</dt>
                         <dd>23</dd>
                         <dt>SEX</dt>
@@ -80,28 +101,28 @@
                 </div>
             </div>
 
-            <footer class='media'>
-                <a href='#'>
+            <footer class="media">
+                <a href="#">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-icongithub"></use>
                     </svg>
                 </a>
-                <a href='#'>
+                <a href="#">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-jianshu_circle"></use>
                     </svg>
                 </a>
-                <a href='#'>
+                <a href="#">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-university"></use>
                     </svg>
                 </a>
-                <a href='#'>
+                <a href="#">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-jirengulogojichu1"></use>
                     </svg>
                 </a>
-                <a href='#'>
+                <a href="#">
                     <svg class="icon" aria-hidden="true">
                         <use xlink:href="#icon-weibo"></use>
                     </svg>
@@ -109,14 +130,14 @@
             </footer>
         </div>
         <p class="download-outer">
-            <a class="download" href='./吴博文.pdf' alt="个人简历" download>下载 PDF 简历</a>
+            <a class="download" href="./吴博文.pdf" alt="个人简历" download>下载 PDF 简历</a>
         </p>
 
         <p class="selfIntroduction">吴博文，web前端工程师
             <br> 技能：前端开发，Vue.js全家桶开发，Node.js开发</p>
     </main>
 
-    <section>
+    <section id="websiteSkills">
         <h2 class="sectionTitle">技能</h2>
         <ol class="skills clearfix">
             <li>
@@ -158,7 +179,7 @@
         </ol>
     </section>
 
-    <section class="portfolio">
+    <section id="websiteWorks" class="portfolio">
         <h2 class="sectionTitle">作品集</h2>
 
         <nav>
@@ -172,14 +193,14 @@
             </div>
         </nav>
 
-        <div class='works'>
-            <div class='big' style="top: 0; left: 0;">
+        <div class="works">
+            <div class="big" style="top: 0; left: 0;">
                 <img src="./image/1.jpg" alt="作品">
             </div>
-            <div class='small' style="top: 0; left: 637px;">
+            <div class="small" style="top: 0; left: 637px;">
                 <img src="./image/2.jpg" alt="作品">
             </div>
-            <div class='small' style="top: 312px; left: 637px;">
+            <div class="small" style="top: 312px; left: 637px;">
                 <img src="./image/3.jpg" alt="作品">
             </div>
         </div>
