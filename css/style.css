@@ -130,12 +130,8 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 3px solid transparent;
     padding: 4px 0;
 }
-
-
-
 .topNavBar nav>ul>li.active>a::after,
-.topNavBar nav>ul>li.clickScrollActive>a::after,
-.topNavBar nav>ul>li.hightLight>a::after{
+.topNavBar nav>ul>li.clickScrollActive>a::after{
     background-color: #E8676B;
     content: '';
     display: block;
@@ -150,11 +146,6 @@ h1,h2,h3,h4,h5,h6{
     0%  { width: 0%; }
     100%{ width: 100%; }
 }
-/* @keyframes topNavBarUnderLineDisappear{
-    0%{ width: 100%; }
-    100%  { width: 0%; }
-} */
-
 
 .topNavBar nav>ul>li.active>.secondLevelMenu{
     display: block;
@@ -189,10 +180,6 @@ h1,h2,h3,h4,h5,h6{
     0%  { margin-right: 100%; }
     100%{ margin-right: 0; }
 }
-
-
-
-
 
 .banner{
     background: url(../image/banner-bg2.jpg) center center no-repeat;
@@ -347,6 +334,7 @@ section > .skills > li > .skillBar > .shillBar-inner{
     border-radius: 2px;
     width:90%;
 }
+section.
 section > .skills > li:nth-child(3),
 section > .skills > li:nth-child(4){
     margin: 40px 0;
