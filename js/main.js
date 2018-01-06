@@ -16,6 +16,10 @@ window.onload = function(){
         }
     }
     
+    setTimeout(function(){
+        let websiteAbout = document.getElementById("websiteAbout");
+        websiteAbout.classList.add("scrollActive");
+    },2500)
     
     window.onscroll = function () {
         var scrollHeight = window.scrollY;
@@ -25,7 +29,7 @@ window.onload = function(){
             topNavBar.classList.remove('sticky');
         }
         // scrollNavActiveFirst(scrollHeight);//第一种方案
-        scrollNavActiveSecond(scrollHeight);//第二中方案
+        scrollNavActiveSecond(scrollHeight);//第二种方案
         
 
     }
@@ -102,6 +106,7 @@ window.onload = function(){
                 minIndex = i;
             }
         }
+        scrollEles[minIndex].classList.add('scrollActive');
         let currentTopNavBarLi = document.querySelector('[href="#' + scrollEles[minIndex].id + '"]').parentNode;
         for (let i = 0, len = topNavBarLis.length; i < len; i++) {
             topNavBarLis[i].classList.remove('clickScrollActive');
