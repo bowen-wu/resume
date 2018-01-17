@@ -8,6 +8,9 @@
             // this.bingEvents.call(this)
         },
         bindEvents: function () {
+            setTimeout(() => {
+                this.normal()
+            },2500)
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
                     // console.log('this === controller',this === controller)   true
@@ -22,6 +25,9 @@
         },
         deactive: function(){
             this.view.classList.remove('sticky')
+        },
+        normal: function(){
+            this.view.classList.add('normal')
         }
     }
     controller.init(view)

@@ -6,10 +6,7 @@
         swiperOptions: {
             loop: true,
             autoplay: {
-                delay: 2500,
-            },
-            pagination: {
-                el: '.swiper-pagination',
+                delay: 4000,
             },
             navigation: {
                 nextEl: '.swiper-button-next',
