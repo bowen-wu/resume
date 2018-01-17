@@ -425,7 +425,7 @@ section.portfolio > .swiper-container > .swiper-wrapper  .githubLink{
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-left: -150px;
+    margin-left: -190px;
     padding: 10px 16px;
     border-radius: 6px;
     background-color: rgba(255,255,255,0.2);
@@ -434,9 +434,9 @@ section.portfolio > .swiper-container > .swiper-wrapper  .githubLink{
 section.portfolio > .swiper-container > .swiper-wrapper  .githubLink.active{
     top: 80%
 }
-section.portfolio .swiper-slide > .githubLink > a{
+section.portfolio .swiper-slide > .githubLink {
     display: flex;
-    max-width: 300px;
+    max-width: 400px;
 }
 section.portfolio .swiper-slide > .githubLink svg {
     fill: #E8676B;
