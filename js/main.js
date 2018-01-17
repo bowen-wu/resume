@@ -1,5 +1,4 @@
 window.onload = function(){
-
     websiteLoading();
     let topNavBar = document.getElementById("topNavBar");
     let topNavBarLis = document.querySelectorAll('.topNavBar nav>ul>li');
@@ -30,12 +29,35 @@ window.onload = function(){
         }
         // scrollNavActiveFirst(scrollHeight);//第一种方案
         scrollNavActiveSecond(scrollHeight);//第二种方案
-        
-
     }
 
 
 
+
+    var mySwiper = new Swiper('.swiper-container', {
+        // Optional parameters
+        loop: true,
+
+        autoplay: {
+            delay: 2500,
+          },
+
+        // // If we need pagination
+        pagination: {
+            el: '.swiper-pagination',
+        },
+
+        // Navigation arrows
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+
+        // And if we need scrollbar
+        // scrollbar: {
+        //   el: '.swiper-scrollbar',
+        // },
+    })
 
     var portfolioAll = document.getElementById("portfolioAll");
     var portfolioFrame = document.getElementById("portfolioFrame");

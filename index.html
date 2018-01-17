@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>吴博文</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="//at.alicdn.com/t/font_521534_cqwb58p2x8mmquxr.js"></script>
+    <script src="//at.alicdn.com/t/font_521534_tezmj96xnqj8aor.js"></script>
 </head>
-
 <body>
     <div id="loading" class="loading-outer">
         <div class="loading"></div>
@@ -16,8 +16,10 @@
     <div id="topNavBar" class="topNavBar clearfix">
         <div class="topNavBar-inner">
             <a class="logo" href="#" alt="logo">
-                <span class="bo">Bo</span><!--
-                --><span class="wen">wen</span>
+                <span class="bo">Bo</span>
+                <!--
+                -->
+                <span class="wen">wen</span>
             </a>
             <nav>
                 <ul class="clearfix">
@@ -37,18 +39,25 @@
                         <a href="#websiteWorks">作品</a>
                         <ul class="secondLevelMenu">
                             <li>Website Navigation</li>
-                             <li>Drawing Board</li>
+                            <li>Drawing Board</li>
                             <li>Myself resume</li>
-                             <li>敬请期待</li>
                             <li>敬请期待</li>
                             <li>敬请期待</li>
-                        </ul> 
+                            <li>敬请期待</li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#websiteGlob">博客</a>
                         <ul class="secondLevelMenu">
-                            <li>简书</li>
-                            <li>知乎</li>
+                            <li>
+                                <a href="https://bowen-wu.github.io/">个人博客</a>
+                            </li>
+                            <li>
+                                <a href="#">简书</a>
+                            </li>
+                            <li>
+                                <a href="#">知乎</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -181,7 +190,6 @@
 
     <section data-scroll id="websiteWorks" class="portfolio">
         <h2 class="sectionTitle">作品集</h2>
-
         <nav>
             <ol class="clearfix">
                 <li id="portfolioAll">所有</li>
@@ -192,22 +200,34 @@
                 <div id="portfolioBar" class="sliderBar-inner sliderBarStateFirst"></div>
             </div>
         </nav>
+        <!-- Slider main container -->
+        <div class="swiper-container">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+                <!-- Slides -->
+                <div class="swiper-slide">
+                    <img src="./image/nav-web.png" alt="作品">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/canvas.png" alt="作品">
+                </div>
+                <div class="swiper-slide">
+                    <img src="./image/slide.png" alt="作品">
+                </div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
 
-        <div class="works">
-            <div class="big" style="top: 0; left: 0;">
-                <img src="./image/1.jpg" alt="作品">
-            </div>
-            <div class="small" style="top: 0; left: 637px;">
-                <img src="./image/2.jpg" alt="作品">
-            </div>
-            <div class="small" style="top: 312px; left: 637px;">
-                <img src="./image/3.jpg" alt="作品">
-            </div>
+            <!-- If we need navigation buttons -->
+            <div class="page swiper-button-prev"></div>
+            <div class="page swiper-button-next"></div>
         </div>
-
     </section>
-    <script src="./js/tween.min.js"></script>
-    <script src="./js/main.js"></script>
-</body>
 
+
+    <script src="./js/tween.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.1.0/js/swiper.min.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
 </html>

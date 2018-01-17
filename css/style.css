@@ -356,54 +356,61 @@ section > .skills > li:nth-child(even){
     float: right;
 }
 
-.portfolio{
+section.portfolio{
     text-align: center;
 }
-.portfolio > nav{
+section.portfolio > nav{
     display:inline-block;
 }
-.portfolio > nav > ol{
+section.portfolio > nav > ol{
     display: inline-block;
     margin-top: 2px;
 }
-.portfolio > nav > ol > li{
+section.portfolio > nav > ol > li{
     float: left;
     font-size: 14px;
     cursor: pointer;
     padding: 0 6px;
 }
-.portfolio > nav > ol > li:nth-child(2){
+section.portfolio > nav > ol > li:nth-child(2){
     margin: 0 28px;
 }
-.portfolio > nav > .sliderBar{
+section.portfolio > nav > .sliderBar{
     height: 5px;
     background: #fff;
     border-radius: 4px;
     transition: all 0.2s;
 }
-.portfolio > nav > .sliderBar > .sliderBar-inner{
+section.portfolio > nav > .sliderBar > .sliderBar-inner{
     height: 100%;
     background: #E6686A;
     border-radius: 4px;
     transition: all 0.2s;
 }
-.portfolio > nav > .sliderBar > .sliderBarStateFirst{
+section.portfolio > nav > .sliderBar > .sliderBarStateFirst{
     width: 40px;
     margin-left: 0;
 }
-.portfolio > nav > .sliderBar > .sliderBarStateSecond{
+section.portfolio > nav > .sliderBar > .sliderBarStateSecond{
     width: 60px;
     margin-left: 58px;
 }
-.portfolio > nav > .sliderBar > .sliderBarStateThird{
+section.portfolio > nav > .sliderBar > .sliderBarStateThird{
     width: 100px;
     margin-left: 135px;
 }
-.portfolio > .works{
-    position: relative;
+
+section.portfolio > .swiper-container {
     margin-top: 40px;
-    height: 597px;
 }
-.portfolio > .works > div{
-    position: absolute;
+section.portfolio > .swiper-container .swiper-slide > img {
+    vertical-align: top;
+    width: 668px;
+    height: 501px;
+}
+section.portfolio > .swiper-container .page{
+    width: 44px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 50%;
 }
