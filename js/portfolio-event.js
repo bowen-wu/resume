@@ -1,26 +1,48 @@
 !function () {
     let view = document.querySelector('.portfolio')
-    view.style.outline = '1px solid red'
-    let portfolioAll = view.querySelector('#portfolioAll')
-    var portfolioFrame = view.querySelector('#portfolioFrame')
-    var portfolioProtogenesis = view.querySelector('#portfolioProtogenesis')
-    var wrapper = view.querySelectorAll('.swiper-container > .swiper-wrapper')[0]
-    var portfolioBar = view.querySelector('#portfolioBar')
-    portfolioAll.onclick = function () {
-        portfolioBar.className = "sliderBar-inner sliderBarStateFirst"
+    let controller = {
+        view: null,
+        portfolioAll: null,
+        portfolioFrame: null,
+        portfolioProtogenesis: null,
+        wrapper: null,
+        portfolioBar: null,
+        swiper: null,
+        init: function () {
+            this.view = view
+            this.portfolioAll = view.querySelector('#portfolioAll')
+            this.portfolioFrame = view.querySelector('#portfolioFrame')
+            this.portfolioProtogenesis = view.querySelector('#portfolioProtogenesis')
+            this.wrapper = view.querySelectorAll('.swiper-container > .swiper-wrapper')[0]
+            this.portfolioBar = view.querySelector('#portfolioBar')
+            this.swiper = window.selfSwiper()
+            this.bindEvents()
+        },
+        bindEvents: function () {
+            this.portfolioAll.onclick = () => {
+                this.changeClassName('sliderBarStateFirst')
+            }
+            this.portfolioFrame.onclick = () => {
+                this.changeClassName('sliderBarStateSecond')
+            }
+            this.portfolioProtogenesis.onclick = () => {
+                this.changeClassName('sliderBarStateThird')
+            }
+            this.wrapper.onmouseenter = () => {
+                this.playStatus('stop')
+            }
+            this.wrapper.onmouseleave = () => {
+                this.playStatus('start')
+            }
+        },
+        changeClassName: function(className){
+            this.portfolioBar.className = `sliderBar-inner ${className}`
+        },
+        playStatus: function(status){
+            this.swiper.autoplay[status]()
+        }
     }
-    portfolioFrame.onclick = function () {
-        portfolioBar.className = "sliderBar-inner sliderBarStateSecond"
-    }
-    portfolioProtogenesis.onclick = function () {
-        portfolioBar.className = "sliderBar-inner sliderBarStateThird"
-    }
-    wrapper.onmouseenter = () => {
-        window.selfSwiper().autoplay.stop();
-    }
-    wrapper.onmouseleave = () => {
-        window.selfSwiper().autoplay.start();
-    }
+    controller.init(view)
 }.call()
 
 

@@ -1,8 +1,20 @@
 !function () {
     let view = document.getElementById("websiteAbout");
-    view.style.outline = '1px solid red'
-    setTimeout(function () {
-        websiteAbout.classList.add("scrollActive");
-    }, 2500)
+    let controller = {
+        view: null,
+        init: function () {
+            this.view = view
+            this.bindEvents()
+        },
+        bindEvents: function () {
+            setTimeout(() => {
+                this.active()
+            }, 2500)
+        },
+        active: function(){
+            this.view.classList.add("scrollActive");
+        }
+    }
+    controller.init(view)
 }.call()
 

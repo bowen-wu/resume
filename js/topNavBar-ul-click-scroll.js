@@ -1,36 +1,56 @@
 !function () {
     let view = document.querySelector('.topNavBar nav')
-    view.style.outline = '1px solid red'
-    let topNavBarLis = view.querySelectorAll('.topNavBar nav > ul > li')
-    let topNavBarATag = view.querySelectorAll('.topNavBar nav > ul > li > a')
-    for (let i = 0, len = topNavBarLis.length; i < len; i++) {
-        topNavBarLis[i].onmouseenter = function (event) {
-            event.currentTarget.classList.add('active');
-        }
-        topNavBarLis[i].onmouseleave = function (event) {
-            event.currentTarget.classList.remove('active');
-        }
-        topNavBarLis[i].onclick = function (event) {
-            topNavBarClickEvent(event);
-        }
-    }
-
-    function topNavBarClickEvent(event) {
-        event.preventDefault();
-        let scrollHeight = window.scrollY;
-        let topNavBarATagClickHref = event.target.getAttribute('href');
-        let mainSection = document.querySelector(topNavBarATagClickHref);
-        if (mainSection !== null) {
-            let mainSectionOffsetTop = mainSection.offsetTop;
+    let controller = {
+        view: null,
+        lis: null,
+        aTags: null,
+        currentSection: null,
+        init: function () {
+            this.view = view
+            this.lis = this.view.querySelectorAll('ul > li')
+            this.aTags = this.view.querySelectorAll('ul > li > a')
+            this.initAnimation()
+            this.bindEvents()
+            //this.bingEvents.call(this)   this === controller
+        },
+        initAnimation: function () {
             function animate(time) {
                 requestAnimationFrame(animate);
                 TWEEN.update(time);
             }
             requestAnimationFrame(animate);
+        },
+        bindEvents: function () {
+            for (let i = 0, len = this.lis.length; i < len; i++) {
+                this.lis[i].onmouseenter = (event) => {
+                    this.active(event)
+                }
+                this.lis[i].onmouseleave = (event) => {
+                    this.deactive(event)
+                }
+                this.lis[i].onclick = (event) => {
+                    this.currentSection = document.querySelector(event.target.getAttribute('href'))
+                    this.topNavBarClickEvent(event);
+                    // this.topNavBarClickEvent.call(this,event)
+                }
+            }
+        },
+        active: function (event) {
+            event.currentTarget.classList.add('active')
+        },
+        deactive: function (event) {
+            event.currentTarget.classList.remove('active');
+        },
+        topNavBarClickEvent: function (event) {
+            event.preventDefault();
+            this.goToAssignPlace()
+            // this.goToAssignPlace.call(this)
 
-            var coords = { y: scrollHeight };
+        },
+        goToAssignPlace: function () {
+            var coords = { y: window.scrollY };
             var tween = new TWEEN.Tween(coords)
-                .to({ y: mainSectionOffsetTop - 100 }, 1000)
+                .to({ y: this.currentSection.offsetTop - 100 }, 1000)
                 .easing(TWEEN.Easing.Quadratic.Out)
                 .onUpdate(function () {
                     window.scrollTo(0, coords.y);
@@ -38,5 +58,7 @@
                 .start();
         }
     }
+    controller.init(view)
+    // controller.init.call(controller)
 }.call()
 

@@ -1,13 +1,29 @@
 !function () {
     let view = document.getElementById("topNavBar")
-    view.style.outline = '1px solid red'
-    window.addEventListener('scroll', () => {
-        var scrollHeight = window.scrollY;
-        if (scrollHeight > 50) {
-            view.classList.add('sticky');
-        } else {
-            view.classList.remove('sticky');
+    let controller = {
+        view: null,
+        init: function () {
+            this.view = view
+            this.bindEvents()
+            // this.bingEvents.call(this)
+        },
+        bindEvents: function () {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    // console.log('this === controller',this === controller)   true
+                    this.active()
+                } else {
+                    this.deactive()
+                }
+            })
+        },
+        active: function(){
+            this.view.classList.add('sticky')
+        },
+        deactive: function(){
+            this.view.classList.remove('sticky')
         }
-    })
+    }
+    controller.init(view)
 }.call()
 
