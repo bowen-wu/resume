@@ -402,6 +402,7 @@ section.portfolio > nav > .sliderBar > .sliderBarStateThird{
 
 section.portfolio > .swiper-container {
     margin-top: 40px;
+    cursor: pointer;
 }
 section.portfolio > .swiper-container .swiper-slide > img {
     vertical-align: top;
