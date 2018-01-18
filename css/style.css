@@ -4,7 +4,7 @@
 }
 body{
     background: #efefef;
-    margin-bottom: 100px;
+    margin-bottom: 500px;
 }
 a{
     text-decoration: none;
@@ -547,7 +547,7 @@ section.leaveMessage form > .username{
     margin-right: 1%;
 }
 section.leaveMessage form > .content{
-    min-width: 80%;
+    min-width: 75%;
 }
 section.leaveMessage form > .submit{
     color: #FFF;
@@ -556,20 +556,15 @@ section.leaveMessage form > .submit{
     margin-left: 10px;
     font-size: 16px;
     padding: 0 10px;
-    display: none;
-    cursor: pointer;
-}
-section.leaveMessage form > .submit.deactive{
-    display: block;
-    background-color: rgba(232, 103, 107,0.5);
+    cursor: not-allowed;
 }
 section.leaveMessage form > .submit.active{
-    display: block;
     background-color: rgba(232, 103, 107,0.9);
+    cursor: pointer;
 }
-section.leaveMessage form > .content.active{
+/* section.leaveMessage form > .content.active{
     min-width: 75%;
-}
+} */
 section.leaveMessage form > .content:focus,
 section.leaveMessage form > .username:focus{
     border: 1px solid #3d4451;
