@@ -7,7 +7,7 @@
     <title>吴博文</title>
     <link rel="stylesheet" href="./css/swiper.min.css">
     <link rel="stylesheet" href="./css/style.css">
-    <script src="//at.alicdn.com/t/font_521534_tezmj96xnqj8aor.js"></script>
+    <script src="//at.alicdn.com/t/font_521534_fb1if5ls0y17cik9.js"></script>
 </head>
 <body>
     <div id="loading" class="loading-outer">
@@ -69,7 +69,10 @@
                         <a href="#websiteContact">联系方式</a>
                     </li>
                     <li>
-                        <a href="#wensiteOther">其他</a>
+                        <a href="#websiteMessage">留言</a>
+                    </li>
+                    <li>
+                        <a href="#websiteOther">其他</a>
                     </li>
                 </ul>
             </nav>
@@ -208,7 +211,7 @@
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                    <img src="./image/nav-web.png" alt="作品">
+                    <img width="668px" height="501px" src="./image/nav-web.png" alt="作品">
                     <div class="githubLink">
                         <a target="_blank" href="https://bowen-wu.github.io/nav-web/index.html">
                             <svg class="icon">
@@ -219,7 +222,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./image/canvas.png" alt="作品">
+                    <img width="668px" height="501px" src="./image/canvas.png" alt="作品">
                     <div class="githubLink">
                         <a target="_blank" href="https://bowen-wu.github.io/drawing-board/index.html">
                             <svg class="icon">
@@ -230,7 +233,7 @@
                     </div>
                 </div>
                 <div class="swiper-slide">
-                    <img src="./image/slide.png" alt="作品">
+                    <img width="668px" height="501px" src="./image/slide.png" alt="作品">
                     <div class="githubLink">
                         <a target="_blank" href="https://bowen-wu.github.io/carousel-fully-functional/index.html">
                             <svg class="icon">
@@ -246,10 +249,29 @@
             <div class="page swiper-button-next"></div>
         </div>
     </section>
+    <section id="websiteGlob"></section>
+    <section id="websiteCalendar"></section>
+    <section id="websiteContact"></section>
+    <section id="websiteMessage" class="leaveMessage">
+        <h2 class="sectionTitle">留言</h2>
+        <div class="leaveMessageContent">
+            <div class="countMessage"><span id="countMessage"></span>条留言</div>
+            <ol id="messageList" class="messageList"></ol>
+            <form>
+                <input id="leaveMessageUsername" class="username" type="text" name="username" placeholder="姓名">
+                <input id="leaveMessageContent" class="content" type="text" name="content" placeholder="写下您的留言...">
+                <input id="leaveMessageSubmit" class="submit" type="submit" value="留言">
+            </form>
+        </div>
+        
+    </section>
+    <section id="websiteOther"></section>
 
 
     <script src="./js/tween.min.js"></script>
     <script src="./js/swiper.min.js"></script>
+    <script src="//cdn1.lncld.net/static/js/3.5.0/av-min.js"></script>
+    <!-- 模块化 -->
     <script src="./js/main.js"></script>
     <script src="./js/loading.js"></script>
     <script src="./js/topNavBar-sticky+autoScrollDown.js"></script>
@@ -259,6 +281,7 @@
     <script src="./js/portfolio-event.js"></script>
 
     <script src="./js/auto-slide-up.js"></script>
+    <script src="./js/leaveMessage-system-database.js"></script>
 
 
 </body>

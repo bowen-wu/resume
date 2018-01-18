@@ -186,7 +186,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .banner{
-    background: url(../image/banner-bg2.jpg) center center no-repeat;
+    background: url(../image/banner-bg7.jpg) center center no-repeat;
     background-size: cover;
     height: 520px;
 }
@@ -464,4 +464,114 @@ section.portfolio > .swiper-container .page{
     padding: 10px;
     background-color: #fff;
     border-radius: 50%;
+}
+section.portfolio > .swiper-container .swiper-button-next{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E");
+}
+section.portfolio > .swiper-container .swiper-button-prev{
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E")
+}
+section.leaveMessage{
+
+}
+section.leaveMessage > .leaveMessageContent{
+    background-color: #fdfdfd;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* box-shadow: 0px 2px 4px 2px rgba(0,0,0,0.2); */
+    box-shadow: 0 -1px 6px rgba(26,26,26,.1);
+    /* padding: 0 50px 50px; */
+}
+section.leaveMessage > .leaveMessageContent > .countMessage{
+    color: #3d4451;
+    font-weight: 600;
+    font-size: 18px;
+    border-bottom: 1px solid #F6F6F6;
+    margin: 0 20px;
+    padding: 20px 50px;
+}
+section.leaveMessage .messageList{
+padding: 0 50px;
+}
+section.leaveMessage .messageList > li{
+    border-bottom: 1px solid #DDDDDD;
+    position: relative;
+    padding: 20px 20px;
+}
+section.leaveMessage .messageList > li:last-child{
+    border-bottom: none;
+}
+section.leaveMessage .messageList > li > .username{
+    color: #444;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 20px;
+    transition: all 0.2s;
+}
+section.leaveMessage .messageList > li > .username:hover{
+    color: #E8676B;
+}
+section.leaveMessage .messageList > li > .leaveMessageContent{
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 10px;
+    color: #555;
+}
+section.leaveMessage .messageList > li > .time{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: #999;
+    font-size: 14px;
+}
+section.leaveMessage form{
+    margin: 0 20px;
+    padding: 20px 50px 50px;
+    border-top: 1px solid #F6F6F6;
+    display: flex;
+}
+section.leaveMessage form > input{
+    padding: 6px 10px;
+    background-color: #F6F6F6;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    transition: all 0.2s;
+}
+section.leaveMessage form > .username{
+    max-width: 10%;
+    margin-right: 1%;
+}
+section.leaveMessage form > .content{
+    min-width: 80%;
+}
+section.leaveMessage form > .submit{
+    color: #FFF;
+    background-color: rgba(232, 103, 107,0.5);
+    border: none;
+    margin-left: 10px;
+    font-size: 16px;
+    padding: 0 10px;
+    display: none;
+    cursor: pointer;
+}
+section.leaveMessage form > .submit.deactive{
+    display: block;
+    background-color: rgba(232, 103, 107,0.5);
+}
+section.leaveMessage form > .submit.active{
+    display: block;
+    background-color: rgba(232, 103, 107,0.9);
+}
+section.leaveMessage form > .content.active{
+    min-width: 75%;
+}
+section.leaveMessage form > .content:focus,
+section.leaveMessage form > .username:focus{
+    border: 1px solid #3d4451;
+    background-color: #fff;
 }
