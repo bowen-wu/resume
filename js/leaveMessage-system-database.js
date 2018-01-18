@@ -1,7 +1,22 @@
 !function () {
     let view = document.querySelector('section.leaveMessage')
+    let model = {
+        fetch: function () {
+            let messages = new AV.Query('Message')
+            return messages.find()  //　Promise　对象
+        },
+        save: function (username,content) {  // Promise 对象
+            var Message = AV.Object.extend('Message')
+            var message = new Message()
+            return message.save({
+                username: username,
+                content: content
+            })
+        }
+    }
     let controller = {
         view: null,
+        model: null,
         ol: null,
         form: null,
         countMessage: null,
@@ -10,6 +25,7 @@
         username: null,
         init: function () {
             this.view = view
+            this.model = model
             this.ol = view.querySelector('#messageList')
             this.form = view.querySelector('section.leaveMessage form')
             this.countMessage = view.querySelector('#countMessage')
@@ -26,8 +42,7 @@
             AV.init({ appId: APP_ID, appKey: APP_KEY })
         },
         readingDate: function () {
-            let messages = new AV.Query('Message');
-            messages.find().then((messages) => {
+            this.model.fetch().then((messages) => {
                 this.countMessage.textContent = messages.length
                 messages.forEach((message) => {
                     // let data = message.set('status', 1)
@@ -41,12 +56,7 @@
                 this.submit.classList.remove('active')
                 let username = view.querySelector('form input[name=username]').value
                 let content = view.querySelector('form input[name=content]').value
-                var Message = AV.Object.extend('Message');
-                var message = new Message()
-                message.save({
-                    username: username,
-                    content: content
-                }).then((object) => {
+                this.model.save(username,content).then((object) => {
                     let date = object.set('status', 1)
                     let countMessage = document.querySelector('#countMessage')
                     countMessage.textContent = parseInt(countMessage.textContent, 10) + 1
@@ -100,6 +110,6 @@
         },
     }
 
-    controller.init(view)
+    controller.init(view,model)
 
 }.call()
