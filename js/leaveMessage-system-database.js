@@ -2,8 +2,6 @@
     let view = document.querySelector('section.leaveMessage')
 
 
-
-
     var APP_ID = 'sVayEmmvvuiy4NFwyNWSazU3-gzGzoHsz';
     var APP_KEY = 'fIzNhLcRHKDNloQJztPifTVe';
 
