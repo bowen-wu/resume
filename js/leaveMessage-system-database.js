@@ -17,7 +17,7 @@
                 username: username,
                 content: content
             })
-        }
+        },
     }
     let controller = {
         view: null,

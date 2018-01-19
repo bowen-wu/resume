@@ -519,7 +519,7 @@ section.leaveMessage .messageList > li > .leaveMessageContent{
 }
 section.leaveMessage .messageList > li > .time{
     position: absolute;
-    top: 30px;
+    top: 25px;
     right: 30px;
     color: #999;
     font-size: 14px;
