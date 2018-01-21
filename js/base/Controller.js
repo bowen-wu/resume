@@ -3,11 +3,13 @@ window.Controller = function (options) {
     let obj = {
         view: null,
         model: null,
-        init: function (view,model) {
-            console.log('this',this)
+        init: function (view, model) {
+            console.log('this', this)
             this.view = view
-            this.model = model
-            this.model.init()
+            if (model) {
+                this.model = model
+                this.model.init()
+            }
             init.call(this)
             this.bindEvents() // this.bindEvents.call(this)
         }

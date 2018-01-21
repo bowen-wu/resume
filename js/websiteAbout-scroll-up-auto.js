@@ -1,11 +1,7 @@
 !function () {
-    let view = View("#websiteAbout");
-    let controller = {
-        view: null,
-        init: function () {
-            this.view = view
-            this.bindEvents()
-        },
+    let view = View("#websiteAbout")
+    let controller = Controller({
+        init: function () {},
         bindEvents: function () {
             setTimeout(() => {
                 this.active()
@@ -14,7 +10,7 @@
         active: function(){
             this.view.classList.add("scrollActive");
         }
-    }
+    })
     controller.init(view)
 }.call()
 

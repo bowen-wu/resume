@@ -1,17 +1,13 @@
 !function () {
     let view = View('.topNavBar nav')
-    let controller = {
-        view: null,
+    let controller = Controller({
         lis: null,
         aTags: null,
         currentSection: null,
         init: function () {
-            this.view = view
             this.lis = this.view.querySelectorAll('ul > li')
             this.aTags = this.view.querySelectorAll('ul > li > a')
             this.initAnimation()
-            this.bindEvents()
-            //this.bingEvents.call(this)   this === controller
         },
         initAnimation: function () {
             function animate(time) {
@@ -57,8 +53,7 @@
                 })
                 .start();
         }
-    }
+    })
     controller.init(view)
-    // controller.init.call(controller)
 }.call()
 

@@ -1,7 +1,6 @@
 !function () {
     let view = View('.portfolio')
-    let controller = {
-        view: null,
+    let controller = Controller({
         portfolioAll: null,
         portfolioFrame: null,
         portfolioProtogenesis: null,
@@ -10,7 +9,6 @@
         swiper: null,
         codeLink: null,
         init: function () {
-            this.view = view
             this.portfolioAll = view.querySelector('#portfolioAll')
             this.portfolioFrame = view.querySelector('#portfolioFrame')
             this.portfolioProtogenesis = view.querySelector('#portfolioProtogenesis')
@@ -18,7 +16,6 @@
             this.portfolioBar = view.querySelector('#portfolioBar')
             this.codeLink = view.querySelectorAll('.swiper-container .githubLink')
             this.swiper = window.selfSwiper()
-            this.bindEvents()
         },
         bindEvents: function () {
             this.portfolioAll.onclick = () => {
@@ -54,7 +51,7 @@
         deactive: function(index){
             this.codeLink[index].classList.remove('active')
         }
-    }
+    })
     controller.init(view)
 }.call()
 

@@ -1,11 +1,7 @@
 !function(){
     let view = View("topNavBar")
-    let controller = {
-        view: null,
-        init: function(){
-            this.view = view
-            this.bindEvents()
-        },
+    let controller = Controller({
+        init: function(){},
         bindEvents: function(){
             setTimeout(() => {
                 this.normal()
@@ -14,6 +10,6 @@
         normal: function(){
             this.view.classList.add('normal')
         }
-    }
+    })
     controller.init(view)
 }.call()
