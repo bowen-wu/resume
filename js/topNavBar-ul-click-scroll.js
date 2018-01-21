@@ -1,5 +1,5 @@
 !function () {
-    let view = document.querySelector('.topNavBar nav')
+    let view = View('.topNavBar nav')
     let controller = {
         view: null,
         lis: null,

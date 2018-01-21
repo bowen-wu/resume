@@ -1,5 +1,5 @@
 !function () {
-    let view = document.getElementById("websiteAbout");
+    let view = View("#websiteAbout");
     let controller = {
         view: null,
         init: function () {

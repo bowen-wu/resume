@@ -1,5 +1,5 @@
 !function () {
-    let view = document.querySelector('.portfolio')
+    let view = View('.portfolio')
     let controller = {
         view: null,
         portfolioAll: null,

@@ -1,24 +1,11 @@
+
+
+// 这是第一次写的，放弃
+
 !function () {
-    let view = document.querySelector('section.leaveMessage')
-    let model = {
-        initAV: function () {
-            var APP_ID = 'sVayEmmvvuiy4NFwyNWSazU3-gzGzoHsz';
-            var APP_KEY = 'fIzNhLcRHKDNloQJztPifTVe';
-            AV.init({ appId: APP_ID, appKey: APP_KEY })
-        },
-        fetch: function () {
-            let messages = new AV.Query('Message')
-            return messages.find()  //　Promise　对象
-        },
-        save: function (username,content) {  // Promise 对象
-            var Message = AV.Object.extend('Message')
-            var message = new Message()
-            return message.save({
-                username: username,
-                content: content
-            })
-        },
-    }
+    let view = View('section.leaveMessage')
+    let model = Model({date: 'Message'})
+        
     let controller = {
         view: null,
         model: null,
@@ -56,7 +43,10 @@
                 this.submit.classList.remove('active')
                 let username = view.querySelector('form input[name=username]').value
                 let content = view.querySelector('form input[name=content]').value
-                this.model.save(username,content).then((object) => {
+                this.model.save({
+                    'username': username,
+                    'content': content
+                }).then((object) => {
                     let date = object.set('status', 1)
                     this.countMessage.textContent = parseInt(countMessage.textContent, 10) + 1
                     this.createLi(date)
