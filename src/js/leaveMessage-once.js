@@ -21,7 +21,6 @@
             })
         },
         init: function(){
-            console.log('params this ==>',this)
             this.countMessages = view.querySelector('#countMessage')
             this.ol = view.querySelector('#messageList')
             this.form = view.querySelector('form')

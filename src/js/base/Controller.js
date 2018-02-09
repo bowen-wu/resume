@@ -4,7 +4,6 @@ window.Controller = function (options) {
         view: null,
         model: null,
         init: function (view, model) {
-            console.log('this', this)
             this.view = view
             if (model) {
                 this.model = model
