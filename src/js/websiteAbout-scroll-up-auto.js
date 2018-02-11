@@ -1,4 +1,4 @@
-!function () {
+export default function () {
     let view = View("#websiteAbout")
     let controller = Controller({
         init: function () {},
@@ -12,5 +12,5 @@
         }
     })
     controller.init(view)
-}.call()
+}
 

@@ -108,7 +108,7 @@ h6 {
     color: #b7b7b7;
     transform: translateY(-50px);
     transition: all 0.5s;
-    &.normal {
+    &.normally {
         transform: translateY(0);
     }
     &.sticky {
@@ -218,7 +218,7 @@ h6 {
 }
 
 .banner {
-    background: url(../image/banner-bg7.jpg) center center no-repeat;
+    background: url(../dist/image/banner-bg.jpg) center center no-repeat;
     background-size: cover;
     height: 520px;
     .mask {

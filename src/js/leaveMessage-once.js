@@ -1,4 +1,4 @@
-!function () {
+export default function () {
     let view = View('section.leaveMessage')
 
     let model = Model({date: 'Message'})
@@ -103,4 +103,4 @@
 
     controller.init(view,model)
     
-}.call()
+}

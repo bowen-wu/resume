@@ -1,4 +1,4 @@
-!function () {
+export default function () {
     let view = View('.topNavBar nav')
     let controller = Controller({
         lis: null,
@@ -55,5 +55,5 @@
         }
     })
     controller.init(view)
-}.call()
+}
 

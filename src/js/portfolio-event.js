@@ -1,4 +1,4 @@
-!function () {
+export default function () {
     let view = View('.portfolio')
     let controller = Controller({
         portfolioAll: null,
@@ -53,6 +53,6 @@
         }
     })
     controller.init(view)
-}.call()
+}
 
 

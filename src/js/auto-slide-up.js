@@ -1,4 +1,4 @@
-!function () {
+export default function() {
     let topNavBarLis = document.querySelectorAll('.topNavBar nav>ul>li');
     window.addEventListener('scroll', () => {
         var scrollHeight = window.scrollY;
@@ -38,4 +38,6 @@
         }
         currentTopNavBarLi.classList.add('clickScrollActive');
     }
-}.call()
+}
+
+

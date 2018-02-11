@@ -1,4 +1,4 @@
-!function () {
+export default function () {
     let view = View('.swiper-container')
     let controller = Controller({
         swiper: null,
@@ -54,4 +54,4 @@
     //     }
     // }
     // controller.init(view)
-}.call()
+}
