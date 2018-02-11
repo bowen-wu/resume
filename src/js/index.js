@@ -24,5 +24,3 @@ topNavBarScrollDownAuto()
 topNavBarStickyAutoScrollDown()
 topNavBarUlClickScroll()
 websiteAboutScrollUpAuto()
-
-console.log('end')
