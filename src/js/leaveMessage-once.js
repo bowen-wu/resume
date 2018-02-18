@@ -4,14 +4,7 @@ export default function () {
     let model = Model({date: 'Message'})
 
     let controller = Controller({
-        countMessages: null,
-        ol: null,
-        form: null,
-        leaveMessageUsername: null,
-        leaveMessageContent: null,
-        leaveMessageSubmit: null,
-        dateObj: null,
-        readingData: function () {
+        readingData() {
             this.model.fetch().then((messages) => {
                 this.countMessages.textContent = messages.length
                 messages.forEach((message) => {
@@ -20,16 +13,16 @@ export default function () {
                 })
             })
         },
-        init: function(){
+        init(){
             this.countMessages = view.querySelector('#countMessage')
             this.ol = view.querySelector('#messageList')
             this.form = view.querySelector('form')
             this.leaveMessageUsername = view.querySelector('#leaveMessageUsername')
             this.leaveMessageContent = view.querySelector('#leaveMessageContent')
             this.leaveMessageSubmit = view.querySelector('#leaveMessageSubmit')
-            this.readingData() // this.readingData.call(this)
+            this.readingData()
         },
-        bindEvents: function () {
+        bindEvents() {
             this.leaveMessageUsername.addEventListener('input', () => {
                 this.submitVerification()
             })
@@ -51,7 +44,7 @@ export default function () {
                 })
             })
         },
-        submitVerification: function () {
+        submitVerification() {
             if (this.leaveMessageUsername.value !== '' && this.leaveMessageContent.value !== '') {
                 this.leaveMessageSubmit['disabled'] = false
                 this.leaveMessageSubmit.classList.add('active')
@@ -60,9 +53,9 @@ export default function () {
                 this.leaveMessageSubmit.classList.remove('active')
             }
         },
-        writePages: function () {
+        writePages() {
             let message = this.dateObj
-            let liObj = this.createLi() //this.createLi.call(this)
+            let liObj = this.createLi()
             liObj.title.textContent = message.attributes.username
             liObj.content.textContent = message.attributes.content
             let createTime = this.createTime(message.updatedAt)
@@ -70,7 +63,7 @@ export default function () {
             this.leaveMessageUsername.value = ''
             this.leaveMessageContent.value = ''
         },
-        createLi: function () {
+        createLi() {
             let createEle = this.createEle
             let li = createEle('li', this.ol, '')
             let a = createEle('a', li, 'username')
@@ -84,13 +77,13 @@ export default function () {
             }
             return obj
         },
-        createEle: function (ele, parent, klassName) {
+        createEle(ele, parent, klassName) {
             let element = document.createElement(ele)
             element.className = klassName
             parent.appendChild(element)
             return element
         },
-        createTime: function (time) {
+        createTime(time) {
             let year = time.getFullYear()
             let month = time.getMonth() + 1
             let date = time.getDate()
@@ -100,7 +93,5 @@ export default function () {
             return `${year}年${month}月${date}日 ${hours}:${min}:${second}`
         }
     })
-
     controller.init(view,model)
-    
 }

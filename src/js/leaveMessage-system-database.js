@@ -4,18 +4,9 @@
 
 !function () {
     let view = View('section.leaveMessage')
-    let model = Model({date: 'Message'})
-        
+    let model = Model({ date: 'Message' })
     let controller = {
-        view: null,
-        model: null,
-        ol: null,
-        form: null,
-        countMessage: null,
-        content: null,
-        submit: null,
-        username: null,
-        init: function () {
+        init() {
             this.view = view
             this.model = model
             this.ol = view.querySelector('#messageList')
@@ -25,19 +16,18 @@
             this.content = view.querySelector('#leaveMessageContent')
             this.username = view.querySelector('#leaveMessageUsername')
             this.model.initAV()
-            this.readingDate() // this.readingDate.call(this)
-            this.bindEvents()  //this.bindEvents.call(this)
+            this.readingDate()
+            this.bindEvents()
         },
-        readingDate: function () {
+        readingDate() {
             this.model.fetch().then((messages) => {
                 this.countMessage.textContent = messages.length
                 messages.forEach((message) => {
-                    // let data = message.set('status', 1)
                     this.createLi(message)
                 })
             })
         },
-        bindEvents: function () {
+        bindEvents() {
             this.form.addEventListener('submit', (event) => {
                 event.preventDefault()
                 this.submit.classList.remove('active')
@@ -61,7 +51,7 @@
                 this.submitVerification()
             })
         },
-        submitVerification: function(){
+        submitVerification() {
             if (this.content.value !== '' && this.username.value !== '') {
                 this.submit['disabled'] = false
                 this.submit.classList.add('active')
@@ -70,7 +60,7 @@
                 this.submit.classList.remove('active')
             }
         },
-        createLi: function (object) {
+        createLi(object) {
             let li = this.createEle('li', this.ol, '')
             let svg = this.createEle('svg', li, 'icon')
             let use = this.createEle('use', svg, '')
@@ -82,13 +72,13 @@
             let span = this.createEle('span', li, 'time')
             this.writeTime(object, span)
         },
-        createEle: function (ele, parent, klassName) {
+        createEle(ele, parent, klassName) {
             let element = document.createElement(ele)
             element.className = klassName
             parent.appendChild(element)
             return element
         },
-        writeTime: function writeTime(object, span) {
+        writeTime(object, span) {
             let year = object.updatedAt.getFullYear()
             let month = object.updatedAt.getMonth() + 1
             let date = object.updatedAt.getDate()
@@ -98,7 +88,5 @@
             span.textContent = year + '年' + month + '月' + date + '日 ' + hourse + ':' + minutes + ':' + seconds
         },
     }
-
-    controller.init(view,model)
-
+    controller.init(view, model)
 }.call()

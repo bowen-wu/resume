@@ -78,10 +78,6 @@ var _leaveMessageOnce = __webpack_require__(2);
 
 var _leaveMessageOnce2 = _interopRequireDefault(_leaveMessageOnce);
 
-var _loading = __webpack_require__(3);
-
-var _loading2 = _interopRequireDefault(_loading);
-
 var _portfolioEvent = __webpack_require__(4);
 
 var _portfolioEvent2 = _interopRequireDefault(_portfolioEvent);
@@ -106,26 +102,10 @@ var _websiteAboutScrollUpAuto = __webpack_require__(9);
 
 var _websiteAboutScrollUpAuto2 = _interopRequireDefault(_websiteAboutScrollUpAuto);
 
-var _View = __webpack_require__(10);
-
-var _View2 = _interopRequireDefault(_View);
-
-var _Model = __webpack_require__(11);
-
-var _Model2 = _interopRequireDefault(_Model);
-
-var _Controller = __webpack_require__(12);
-
-var _Controller2 = _interopRequireDefault(_Controller);
-
 __webpack_require__(13);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _Model2.default)();
-(0, _View2.default)();
-(0, _Controller2.default)();
-(0, _loading2.default)();
 (0, _autoSlideUp2.default)();
 (0, _leaveMessageOnce2.default)();
 (0, _portfolioInitSwiper2.default)();
@@ -204,13 +184,6 @@ exports.default = function () {
     var model = Model({ date: 'Message' });
 
     var controller = Controller({
-        countMessages: null,
-        ol: null,
-        form: null,
-        leaveMessageUsername: null,
-        leaveMessageContent: null,
-        leaveMessageSubmit: null,
-        dateObj: null,
         readingData: function readingData() {
             var _this = this;
 
@@ -229,7 +202,7 @@ exports.default = function () {
             this.leaveMessageUsername = view.querySelector('#leaveMessageUsername');
             this.leaveMessageContent = view.querySelector('#leaveMessageContent');
             this.leaveMessageSubmit = view.querySelector('#leaveMessageSubmit');
-            this.readingData(); // this.readingData.call(this)
+            this.readingData();
         },
         bindEvents: function bindEvents() {
             var _this2 = this;
@@ -266,7 +239,7 @@ exports.default = function () {
         },
         writePages: function writePages() {
             var message = this.dateObj;
-            var liObj = this.createLi(); //this.createLi.call(this)
+            var liObj = this.createLi();
             liObj.title.textContent = message.attributes.username;
             liObj.content.textContent = message.attributes.content;
             var createTime = this.createTime(message.updatedAt);
@@ -304,43 +277,11 @@ exports.default = function () {
             return year + '\u5E74' + month + '\u6708' + date + '\u65E5 ' + hours + ':' + min + ':' + second;
         }
     });
-
     controller.init(view, model);
 };
 
 /***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function () {
-    var view = View("#loading");
-
-    var controller = Controller({
-        init: function init() {},
-        bindEvents: function bindEvents() {
-            var _this = this;
-
-            var view = this.view;
-            setTimeout(function () {
-                _this.active();
-            }, 2500);
-        },
-        active: function active() {
-            this.view.classList.add('active');
-        }
-    });
-    controller.init(view);
-    //controller.init.call(controller,view)
-};
-
-/***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -354,13 +295,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
     var view = View('.portfolio');
     var controller = Controller({
-        portfolioAll: null,
-        portfolioFrame: null,
-        portfolioProtogenesis: null,
-        wrapper: null,
-        portfolioBar: null,
-        swiper: null,
-        codeLink: null,
         init: function init() {
             this.portfolioAll = view.querySelector('#portfolioAll');
             this.portfolioFrame = view.querySelector('#portfolioFrame');
@@ -384,9 +318,7 @@ exports.default = function () {
             };
             this.wrapper.onmouseenter = function () {
                 _this.playStatus('stop');
-                // console.log(this.swiper.activeIndex)
                 _this.active(_this.swiper.activeIndex);
-                // console.log(2)
             };
             this.wrapper.onmouseleave = function () {
                 _this.playStatus('start');
@@ -400,7 +332,6 @@ exports.default = function () {
             this.swiper.autoplay[status]();
         },
         active: function active(index) {
-            // console.log(this.codeLink)
             this.codeLink[index].classList.add('active');
         },
         deactive: function deactive(index) {
@@ -450,35 +381,6 @@ exports.default = function () {
         }
     });
     controller.init(view);
-
-    // let controller = {
-    //     view: null,
-    //     swiper: null,
-    //     swiperOptions: {
-    //         loop: true,
-    //         autoplay: {
-    //             delay: 4000,
-    //         },
-    //         navigation: {
-    //             nextEl: '.swiper-button-next',
-    //             prevEl: '.swiper-button-prev',
-    //         }
-    //     },
-    //     init: function () {
-    //         this.view = view
-    //         this.initSwiper()
-    //         this.bindEvents()
-    //     },
-    //     initSwiper: function () {
-    //         this.swiper = new Swiper(view, this.swiperOptions)
-    //     },
-    //     bindEvents: function () {
-    //         window.selfSwiper = () => {
-    //             return this.swiper
-    //         }
-    //     }
-    // }
-    // controller.init(view)
 };
 
 /***/ }),
@@ -524,7 +426,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
     var view = View("#topNavBar");
     var controller = Controller({
-        init: function init() {},
+        init: function init(view) {},
         bindEvents: function bindEvents() {
             var _this = this;
 
@@ -533,7 +435,6 @@ exports.default = function () {
             }, 2500);
             window.addEventListener('scroll', function () {
                 if (window.scrollY > 50) {
-                    // console.log('this === controller',this === controller)   true
                     _this.active();
                 } else {
                     _this.deactive();
@@ -551,38 +452,6 @@ exports.default = function () {
         }
     });
     controller.init(view);
-
-    // let controller = {
-    //     view: null,
-    //     init: function () {
-    //         this.view = view
-    //         this.bindEvents()
-    //         // this.bingEvents.call(this)
-    //     },
-    //     bindEvents: function () {
-    //         setTimeout(() => {
-    //             this.normal()
-    //         },2500)
-    //         window.addEventListener('scroll', () => {
-    //             if (window.scrollY > 50) {
-    //                 // console.log('this === controller',this === controller)   true
-    //                 this.active()
-    //             } else {
-    //                 this.deactive()
-    //             }
-    //         })
-    //     },
-    //     active: function(){
-    //         this.view.classList.add('sticky')
-    //     },
-    //     deactive: function(){
-    //         this.view.classList.remove('sticky')
-    //     },
-    //     normal: function(){
-    //         this.view.classList.add('normal')
-    //     }
-    // }
-    // controller.init(view)
 };
 
 /***/ }),
@@ -599,9 +468,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
     var view = View('.topNavBar nav');
     var controller = Controller({
-        lis: null,
-        aTags: null,
-        currentSection: null,
         init: function init() {
             this.lis = this.view.querySelectorAll('ul > li');
             this.aTags = this.view.querySelectorAll('ul > li > a');
@@ -627,7 +493,6 @@ exports.default = function () {
                 this.lis[i].onclick = function (event) {
                     _this.currentSection = document.querySelector(event.target.getAttribute('href'));
                     _this.topNavBarClickEvent(event);
-                    // this.topNavBarClickEvent.call(this,event)
                 };
             }
         },
@@ -640,7 +505,6 @@ exports.default = function () {
         topNavBarClickEvent: function topNavBarClickEvent(event) {
             event.preventDefault();
             this.goToAssignPlace();
-            // this.goToAssignPlace.call(this)
         },
         goToAssignPlace: function goToAssignPlace() {
             var coords = { y: window.scrollY };
@@ -666,7 +530,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = function () {
     var view = View("#websiteAbout");
     var controller = Controller({
-        init: function init() {},
+        init: function init(view) {},
         bindEvents: function bindEvents() {
             var _this = this;
 
@@ -682,95 +546,9 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function () {
-    window.View = function (selector) {
-        return document.querySelector(selector);
-    };
-};
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function () {
-    window.Model = function (options) {
-        var Date = options.date;
-        return {
-            init: function init() {
-                var APP_ID = 'sVayEmmvvuiy4NFwyNWSazU3-gzGzoHsz';
-                var APP_KEY = 'fIzNhLcRHKDNloQJztPifTVe';
-                AV.init({ appId: APP_ID, appKey: APP_KEY });
-            },
-            fetch: function fetch() {
-                var date = new AV.Query(Date);
-                return date.find(); //　Promise　对象
-            },
-            save: function save(dateObj) {
-                // Promise 对象
-                var xxx = AV.Object.extend(Date);
-                var date = new xxx();
-                return date.save(dateObj);
-            }
-        };
-    };
-};
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-exports.default = function () {
-    window.Controller = function (options) {
-        var _init = options.init;
-        var obj = {
-            view: null,
-            model: null,
-            init: function init(view, model) {
-                this.view = view;
-                if (model) {
-                    this.model = model;
-                    this.model.init();
-                }
-                _init.call(this);
-                this.bindEvents(); // this.bindEvents.call(this)
-            }
-        };
-
-        Object.keys(options).forEach(function (key) {
-            if (key !== 'init') {
-                // obj['key'] === options.key
-                obj[key] = options[key];
-            }
-        });
-        return obj;
-    };
-};
-
-/***/ }),
+/* 10 */,
+/* 11 */,
+/* 12 */,
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -829,7 +607,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0; }\n\nbody {\n  background: #efefef;\n  margin-bottom: 500px; }\n\na {\n  text-decoration: none;\n  color: inherit; }\n\nli {\n  list-style: none; }\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-weight: normal; }\n\n.clearfix::after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.icon {\n  width: 1em;\n  height: 1em;\n  vertical-align: -0.15em;\n  fill: currentColor;\n  overflow: hidden; }\n\n.loading-outer {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  background: #fff;\n  z-index: 2;\n  transition: all 1s; }\n  .loading-outer.active {\n    display: none; }\n  .loading-outer .loading {\n    width: 100px;\n    height: 100px;\n    display: flex;\n    justify-content: center;\n    align-items: center; }\n    .loading-outer .loading::before, .loading-outer .loading::after {\n      content: '';\n      display: block;\n      position: absolute;\n      top: none;\n      left: none;\n      background-color: #AFAFAF;\n      border-radius: 50%;\n      animation: loadingAnimation 1.8s linear infinite; }\n    .loading-outer .loading::after {\n      animation-delay: 0.9s; }\n\n@keyframes loadingAnimation {\n  0% {\n    width: 0;\n    height: 0;\n    opacity: 1; }\n  100% {\n    width: 80px;\n    height: 80px;\n    opacity: 0; } }\n\n.topNavBar {\n  padding: 20px 0;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 1;\n  color: #b7b7b7;\n  transform: translateY(-50px);\n  transition: all 0.5s; }\n  .topNavBar.normally {\n    transform: translateY(0); }\n  .topNavBar.sticky {\n    padding: 10px 0;\n    background-color: #fff;\n    color: #3d4451;\n    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.3); }\n  .topNavBar.active nav {\n    padding: 8px 0 2px; }\n  .topNavBar .topNavBar-inner {\n    padding: 0 16px; }\n    .topNavBar .topNavBar-inner .logo {\n      float: left;\n      line-height: 40px;\n      font-size: 24px;\n      font-family: \"Arial Black\"; }\n      .topNavBar .topNavBar-inner .logo .bo {\n        margin-right: 2px;\n        color: #e8676b; }\n      .topNavBar .topNavBar-inner .logo .wen {\n        color: #9a9da2; }\n    .topNavBar .topNavBar-inner nav {\n      float: right;\n      padding: 8px 10px 2px;\n      transition: all 0.3s; }\n      .topNavBar .topNavBar-inner nav > ul {\n        margin: 0;\n        padding: 0; }\n        .topNavBar .topNavBar-inner nav > ul > li {\n          float: left;\n          margin: 0 15px;\n          position: relative; }\n          .topNavBar .topNavBar-inner nav > ul > li > a {\n            display: block;\n            font-weight: 600;\n            font-size: 12px;\n            color: inherit;\n            border-top: 3px solid transparent;\n            border-bottom: 3px solid transparent;\n            padding: 4px 0; }\n          .topNavBar .topNavBar-inner nav > ul > li.active > a::after,\n          .topNavBar .topNavBar-inner nav > ul > li.clickScrollActive > a::after {\n            content: '';\n            display: block;\n            background-color: #E8676B;\n            margin-top: 4px;\n            margin-right: 100%;\n            height: 3px;\n            width: 100%;\n            border-radius: 2px;\n            animation: topNavBarUnderLineAppear 0.2s; }\n          .topNavBar .topNavBar-inner nav > ul > li.active > .secondLevelMenu {\n            display: block;\n            margin-right: 0; }\n          .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu {\n            display: none;\n            position: absolute;\n            top: 100%;\n            left: none;\n            right: 0;\n            padding: 10px 0;\n            background-color: #fff;\n            color: #2D3540;\n            box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);\n            white-space: nowrap;\n            text-align: right;\n            margin-right: 100%;\n            margin-top: -7px;\n            font-size: 12px;\n            animation: secondLevelMenu 0.2s; }\n            .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu > li {\n              padding: 8px 20px; }\n              .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu > li:hover {\n                cursor: pointer;\n                background-color: #eee;\n                color: #E8676B; }\n\n@keyframes topNavBarUnderLineAppear {\n  0% {\n    width: 0%; }\n  100% {\n    width: 100%; } }\n\n@keyframes secondLevelMenu {\n  0% {\n    margin-right: 100%; }\n  100% {\n    margin-right: 0; } }\n\n.banner {\n  background: url(../dist/image/banner-bg.jpg) center center no-repeat;\n  background-size: cover;\n  height: 520px; }\n  .banner .mask {\n    background-color: rgba(0, 0, 0, 0.5);\n    height: 520px; }\n\n[data-scroll] {\n  transform: translateY(200px);\n  transition: all 0.5s linear; }\n\n[data-scroll].scrollActive {\n  transform: translateY(0); }\n\nmain {\n  margin-top: -340px; }\n  main .userCard {\n    max-width: 930px;\n    margin: 0 auto;\n    background: #fff;\n    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3); }\n    main .userCard .profile {\n      padding: 60px 60px 20px 60px; }\n      main .userCard .profile > .picture {\n        float: left; }\n      main .userCard .profile > .information {\n        float: left;\n        margin-left: 90px;\n        width: 460px; }\n        main .userCard .profile > .information > .welcome {\n          display: inline-block;\n          padding: 3px 6px;\n          background: #e8676b;\n          color: #fff;\n          font-weight: 600;\n          position: relative; }\n          main .userCard .profile > .information > .welcome > .triangle {\n            display: block;\n            position: absolute;\n            top: 100%;\n            left: 4px;\n            border: 5px solid transparent;\n            width: 0;\n            border-top-color: #e8676b;\n            border-left-color: #e8676b; }\n        main .userCard .profile > .information > h1 {\n          margin: 30px 0 6px; }\n        main .userCard .profile > .information > hr {\n          border: none;\n          border-top: 1px solid #dedede;\n          margin: 20px 0; }\n        main .userCard .profile > .information > dl > dt {\n          float: left;\n          width: 30%;\n          padding: 5px 0;\n          font-weight: 600;\n          color: #333333; }\n        main .userCard .profile > .information > dl > dd {\n          float: left;\n          width: 70%;\n          padding: 5px 0;\n          color: #9da0a7; }\n    main .userCard .media {\n      padding: 15px 0;\n      background: #e8676b;\n      text-align: center; }\n      main .userCard .media > a {\n        display: inline-block;\n        padding: 6px;\n        border-radius: 50%;\n        margin: 0 30px; }\n        main .userCard .media > a:hover {\n          background: rgba(0, 0, 0, 0.1); }\n        main .userCard .media > a > .icon {\n          width: 30px;\n          height: 30px;\n          fill: #fff;\n          text-align: center; }\n  main .download-outer {\n    text-align: center;\n    margin: 30px 0 40px; }\n    main .download-outer .download {\n      border: 1px solid #cbcdcf;\n      display: inline-block;\n      vertical-align: top;\n      padding: 15px 55px;\n      color: #3d4451;\n      font-weight: 600;\n      border-radius: 2px;\n      transition: all 0.2s; }\n      main .download-outer .download:hover {\n        box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2); }\n  main .selfIntroduction {\n    font-family: \"kaiti\";\n    font-size: 20px;\n    font-weight: 600;\n    text-align: center;\n    line-height: 1.6; }\n\nsection {\n  max-width: 930px;\n  margin: 0 auto; }\n  section.scrollActive.skillsSection > .skills > li > .skillBar > .shillBar-inner {\n    transform: translateX(0%); }\n  section > .sectionTitle {\n    font-size: 34px;\n    font-weight: 600;\n    margin: 60px 0 25px;\n    text-align: center;\n    color: #3d4451;\n    line-height: 1.2; }\n  section.skillsSection > .skills {\n    background: #fff;\n    padding: 40px 50px 50px;\n    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2); }\n    section.skillsSection > .skills > li {\n      float: left;\n      width: 48%;\n      color: #3d4451;\n      font-size: 14px; }\n      section.skillsSection > .skills > li > .skillBar {\n        height: 5px;\n        background: #FAE1E1;\n        border-radius: 2px;\n        margin-top: 4px;\n        overflow: hidden; }\n        section.skillsSection > .skills > li > .skillBar > .shillBar-inner {\n          height: 100%;\n          background: #e8676b;\n          border-radius: 2px;\n          width: 90%;\n          transform: translateX(-100%);\n          transition: all 1s linear; }\n      section.skillsSection > .skills > li:nth-child(3), section.skillsSection > .skills > li:nth-child(4) {\n        margin: 40px 0; }\n      section.skillsSection > .skills > li:nth-child(even) {\n        float: right; }\n  section.portfolio {\n    text-align: center; }\n    section.portfolio > nav {\n      display: inline-block; }\n      section.portfolio > nav > ol {\n        display: inline-block;\n        margin-top: 2px; }\n        section.portfolio > nav > ol > li {\n          float: left;\n          font-size: 14px;\n          cursor: pointer;\n          padding: 0 6px; }\n          section.portfolio > nav > ol > li:nth-child(2) {\n            margin: 0 28px; }\n      section.portfolio > nav > .sliderBar {\n        height: 5px;\n        background: #fff;\n        border-radius: 4px;\n        transition: all 0.2s; }\n        section.portfolio > nav > .sliderBar > .sliderBar-inner {\n          height: 100%;\n          background: #E6686A;\n          border-radius: 4px;\n          transition: all 0.2s; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateFirst {\n          width: 40px;\n          margin-left: 0; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateSecond {\n          width: 60px;\n          margin-left: 58px; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateThird {\n          width: 100px;\n          margin-left: 135px; }\n    section.portfolio > .swiper-container {\n      margin-top: 40px;\n      cursor: pointer; }\n      section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide {\n        position: relative; }\n        section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > img {\n          vertical-align: top;\n          width: 668px;\n          height: 501px; }\n        section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink {\n          display: flex;\n          max-width: 400px;\n          position: absolute;\n          top: 100%;\n          left: 50%;\n          margin-left: -190px;\n          padding: 10px 16px;\n          border-radius: 6px;\n          background-color: rgba(255, 255, 255, 0.2);\n          transition: all 0.5s; }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink.active {\n            top: 80%; }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink svg {\n            fill: #E8676B;\n            width: 30px;\n            height: 30px;\n            padding: 9px;\n            border: 1px solid rgba(255, 255, 255, 0.4);\n            border-radius: 4px;\n            margin-right: 8px;\n            background-color: transparent;\n            transition: all 0.2s; }\n            section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink svg:hover {\n              background-color: rgba(255, 255, 255, 0.2); }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink p {\n            font-size: 24px;\n            line-height: 50px;\n            font-weight: 600;\n            color: #3d4451; }\n      section.portfolio > .swiper-container > .page {\n        width: 44px;\n        padding: 10px;\n        background-color: #fff;\n        border-radius: 50%; }\n      section.portfolio > .swiper-container .swiper-button-next {\n        background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E\"); }\n      section.portfolio > .swiper-container .swiper-button-prev {\n        background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E\"); }\n  section.leaveMessage > .leaveMessageContent {\n    background-color: #fdfdfd;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    box-shadow: 0 -1px 6px rgba(26, 26, 26, 0.1); }\n    section.leaveMessage > .leaveMessageContent > .countMessage {\n      color: #3d4451;\n      font-weight: 600;\n      font-size: 18px;\n      border-bottom: 1px solid #F6F6F6;\n      margin: 0 20px;\n      padding: 20px 50px; }\n    section.leaveMessage > .leaveMessageContent > .messageList {\n      padding: 0 50px; }\n      section.leaveMessage > .leaveMessageContent > .messageList > li {\n        border-bottom: 1px solid #DDDDDD;\n        position: relative;\n        padding: 20px 20px; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li:last-child {\n          border-bottom: none; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .username {\n          color: #444;\n          cursor: pointer;\n          font-size: 18px;\n          line-height: 20px;\n          transition: all 0.2s; }\n          section.leaveMessage > .leaveMessageContent > .messageList > li > .username:hover {\n            color: #E8676B; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .leaveMessageContent {\n          font-size: 16px;\n          line-height: 16px;\n          margin-top: 10px;\n          color: #555; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .time {\n          position: absolute;\n          top: 25px;\n          right: 30px;\n          color: #999;\n          font-size: 14px; }\n    section.leaveMessage > .leaveMessageContent > form {\n      margin: 0 20px;\n      padding: 20px 50px 50px;\n      border-top: 1px solid #F6F6F6;\n      display: flex; }\n      section.leaveMessage > .leaveMessageContent > form > input {\n        padding: 6px 10px;\n        background-color: #F6F6F6;\n        color: #1a1a1a;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        outline: none;\n        border-radius: 4px;\n        border: 1px solid #ccc;\n        transition: all 0.2s; }\n      section.leaveMessage > .leaveMessageContent > form > .username {\n        max-width: 10%;\n        margin-right: 1%; }\n      section.leaveMessage > .leaveMessageContent > form > .content {\n        min-width: 75%; }\n      section.leaveMessage > .leaveMessageContent > form > .submit {\n        color: #FFF;\n        background-color: rgba(232, 103, 107, 0.5);\n        border: none;\n        margin-left: 10px;\n        font-size: 16px;\n        padding: 0 10px;\n        cursor: not-allowed; }\n        section.leaveMessage > .leaveMessageContent > form > .submit.active {\n          background-color: rgba(232, 103, 107, 0.9);\n          cursor: pointer; }\n      section.leaveMessage > .leaveMessageContent > form > .content:focus,\n      section.leaveMessage > .leaveMessageContent > form > .username:focus {\n        border: 1px solid #3d4451;\n        background-color: #fff; }\n", ""]);
+exports.push([module.i, ".topNavBar {\n  padding: 20px 0;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  z-index: 1;\n  color: #b7b7b7;\n  transform: translateY(-50px);\n  transition: all 0.5s; }\n  .topNavBar.normally {\n    transform: translateY(0); }\n  .topNavBar.sticky {\n    padding: 10px 0;\n    background-color: #fff;\n    color: #3d4451;\n    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.3); }\n  .topNavBar.active nav {\n    padding: 8px 0 2px; }\n  .topNavBar .topNavBar-inner {\n    padding: 0 16px; }\n    .topNavBar .topNavBar-inner .logo {\n      float: left;\n      line-height: 40px;\n      font-size: 24px;\n      font-family: \"Arial Black\"; }\n      .topNavBar .topNavBar-inner .logo .bo {\n        margin-right: 2px;\n        color: #e8676b; }\n      .topNavBar .topNavBar-inner .logo .wen {\n        color: #9a9da2; }\n    .topNavBar .topNavBar-inner nav {\n      float: right;\n      padding: 8px 10px 2px;\n      transition: all 0.3s; }\n      .topNavBar .topNavBar-inner nav > ul {\n        margin: 0;\n        padding: 0; }\n        .topNavBar .topNavBar-inner nav > ul > li {\n          float: left;\n          margin: 0 15px;\n          position: relative; }\n          .topNavBar .topNavBar-inner nav > ul > li > a {\n            display: block;\n            font-weight: 600;\n            font-size: 12px;\n            color: inherit;\n            border-top: 3px solid transparent;\n            border-bottom: 3px solid transparent;\n            padding: 4px 0; }\n          .topNavBar .topNavBar-inner nav > ul > li.active > a::after,\n          .topNavBar .topNavBar-inner nav > ul > li.clickScrollActive > a::after {\n            content: '';\n            display: block;\n            background-color: #E8676B;\n            margin-top: 4px;\n            margin-right: 100%;\n            height: 3px;\n            width: 100%;\n            border-radius: 2px;\n            animation: topNavBarUnderLineAppear 0.2s; }\n          .topNavBar .topNavBar-inner nav > ul > li.active > .secondLevelMenu {\n            display: block;\n            margin-right: 0; }\n          .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu {\n            display: none;\n            position: absolute;\n            top: 100%;\n            left: none;\n            right: 0;\n            padding: 10px 0;\n            background-color: #fff;\n            color: #2D3540;\n            box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2);\n            white-space: nowrap;\n            text-align: right;\n            margin-right: 100%;\n            margin-top: -7px;\n            font-size: 12px;\n            animation: secondLevelMenu 0.2s; }\n            .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu > li {\n              padding: 8px 20px; }\n              .topNavBar .topNavBar-inner nav > ul > li > .secondLevelMenu > li:hover {\n                cursor: pointer;\n                background-color: #eee;\n                color: #E8676B; }\n\n@keyframes topNavBarUnderLineAppear {\n  0% {\n    width: 0%; }\n  100% {\n    width: 100%; } }\n\n@keyframes secondLevelMenu {\n  0% {\n    margin-right: 100%; }\n  100% {\n    margin-right: 0; } }\n\n.banner {\n  background: url(../dist/image/banner-bg.jpg) center center no-repeat;\n  background-size: cover;\n  height: 520px; }\n  .banner .mask {\n    background-color: rgba(0, 0, 0, 0.5);\n    height: 520px; }\n\n[data-scroll] {\n  transform: translateY(200px);\n  transition: all 0.5s linear; }\n\n[data-scroll].scrollActive {\n  transform: translateY(0); }\n\nmain {\n  margin-top: -340px; }\n  main .userCard {\n    max-width: 930px;\n    margin: 0 auto;\n    background: #fff;\n    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.3); }\n    main .userCard .profile {\n      padding: 60px 60px 20px 60px; }\n      main .userCard .profile > .picture {\n        float: left; }\n      main .userCard .profile > .information {\n        float: left;\n        margin-left: 90px;\n        width: 460px; }\n        main .userCard .profile > .information > .welcome {\n          display: inline-block;\n          padding: 3px 6px;\n          background: #e8676b;\n          color: #fff;\n          font-weight: 600;\n          position: relative; }\n          main .userCard .profile > .information > .welcome > .triangle {\n            display: block;\n            position: absolute;\n            top: 100%;\n            left: 4px;\n            border: 5px solid transparent;\n            width: 0;\n            border-top-color: #e8676b;\n            border-left-color: #e8676b; }\n        main .userCard .profile > .information > h1 {\n          margin: 30px 0 6px; }\n        main .userCard .profile > .information > hr {\n          border: none;\n          border-top: 1px solid #dedede;\n          margin: 20px 0; }\n        main .userCard .profile > .information > dl > dt {\n          float: left;\n          width: 30%;\n          padding: 5px 0;\n          font-weight: 600;\n          color: #333333; }\n        main .userCard .profile > .information > dl > dd {\n          float: left;\n          width: 70%;\n          padding: 5px 0;\n          color: #9da0a7; }\n    main .userCard .media {\n      padding: 15px 0;\n      background: #e8676b;\n      text-align: center; }\n      main .userCard .media > a {\n        display: inline-block;\n        padding: 6px;\n        border-radius: 50%;\n        margin: 0 30px; }\n        main .userCard .media > a:hover {\n          background: rgba(0, 0, 0, 0.1); }\n        main .userCard .media > a > .icon {\n          width: 30px;\n          height: 30px;\n          fill: #fff;\n          text-align: center; }\n  main .download-outer {\n    text-align: center;\n    margin: 30px 0 40px; }\n    main .download-outer .download {\n      border: 1px solid #cbcdcf;\n      display: inline-block;\n      vertical-align: top;\n      padding: 15px 55px;\n      color: #3d4451;\n      font-weight: 600;\n      border-radius: 2px;\n      transition: all 0.2s; }\n      main .download-outer .download:hover {\n        box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2); }\n  main .selfIntroduction {\n    font-family: \"kaiti\";\n    font-size: 20px;\n    font-weight: 600;\n    text-align: center;\n    line-height: 1.6; }\n\nsection {\n  max-width: 930px;\n  margin: 0 auto; }\n  section.scrollActive.skillsSection > .skills > li > .skillBar > .shillBar-inner {\n    transform: translateX(0%); }\n  section > .sectionTitle {\n    font-size: 34px;\n    font-weight: 600;\n    margin: 60px 0 25px;\n    text-align: center;\n    color: #3d4451;\n    line-height: 1.2; }\n  section.skillsSection > .skills {\n    background: #fff;\n    padding: 40px 50px 50px;\n    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.2); }\n    section.skillsSection > .skills > li {\n      float: left;\n      width: 48%;\n      color: #3d4451;\n      font-size: 14px; }\n      section.skillsSection > .skills > li > .skillBar {\n        height: 5px;\n        background: #FAE1E1;\n        border-radius: 2px;\n        margin-top: 4px;\n        overflow: hidden; }\n        section.skillsSection > .skills > li > .skillBar > .shillBar-inner {\n          height: 100%;\n          background: #e8676b;\n          border-radius: 2px;\n          width: 90%;\n          transform: translateX(-100%);\n          transition: all 1s linear; }\n      section.skillsSection > .skills > li:nth-child(3), section.skillsSection > .skills > li:nth-child(4) {\n        margin: 40px 0; }\n      section.skillsSection > .skills > li:nth-child(even) {\n        float: right; }\n  section.portfolio {\n    text-align: center; }\n    section.portfolio > nav {\n      display: inline-block; }\n      section.portfolio > nav > ol {\n        display: inline-block;\n        margin-top: 2px; }\n        section.portfolio > nav > ol > li {\n          float: left;\n          font-size: 14px;\n          cursor: pointer;\n          padding: 0 6px; }\n          section.portfolio > nav > ol > li:nth-child(2) {\n            margin: 0 28px; }\n      section.portfolio > nav > .sliderBar {\n        height: 5px;\n        background: #fff;\n        border-radius: 4px;\n        transition: all 0.2s; }\n        section.portfolio > nav > .sliderBar > .sliderBar-inner {\n          height: 100%;\n          background: #E6686A;\n          border-radius: 4px;\n          transition: all 0.2s; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateFirst {\n          width: 40px;\n          margin-left: 0; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateSecond {\n          width: 60px;\n          margin-left: 58px; }\n        section.portfolio > nav > .sliderBar > .sliderBarStateThird {\n          width: 100px;\n          margin-left: 135px; }\n    section.portfolio > .swiper-container {\n      margin-top: 40px;\n      cursor: pointer; }\n      section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide {\n        position: relative; }\n        section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > img {\n          vertical-align: top;\n          width: 668px;\n          height: 501px; }\n        section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink {\n          display: flex;\n          max-width: 400px;\n          position: absolute;\n          top: 100%;\n          left: 50%;\n          margin-left: -190px;\n          padding: 10px 16px;\n          border-radius: 6px;\n          background-color: rgba(255, 255, 255, 0.2);\n          transition: all 0.5s; }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink.active {\n            top: 80%; }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink svg {\n            fill: #E8676B;\n            width: 30px;\n            height: 30px;\n            padding: 9px;\n            border: 1px solid rgba(255, 255, 255, 0.4);\n            border-radius: 4px;\n            margin-right: 8px;\n            background-color: transparent;\n            transition: all 0.2s; }\n            section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink svg:hover {\n              background-color: rgba(255, 255, 255, 0.2); }\n          section.portfolio > .swiper-container > .swiper-wrapper > .swiper-slide > .githubLink p {\n            font-size: 24px;\n            line-height: 50px;\n            font-weight: 600;\n            color: #3d4451; }\n      section.portfolio > .swiper-container > .page {\n        width: 44px;\n        padding: 10px;\n        background-color: #fff;\n        border-radius: 50%; }\n      section.portfolio > .swiper-container .swiper-button-next {\n        background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E\"); }\n      section.portfolio > .swiper-container .swiper-button-prev {\n        background-image: url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23E8676B'%2F%3E%3C%2Fsvg%3E\"); }\n  section.leaveMessage > .leaveMessageContent {\n    background-color: #fdfdfd;\n    border: 1px solid #ccc;\n    border-radius: 4px;\n    box-shadow: 0 -1px 6px rgba(26, 26, 26, 0.1); }\n    section.leaveMessage > .leaveMessageContent > .countMessage {\n      color: #3d4451;\n      font-weight: 600;\n      font-size: 18px;\n      border-bottom: 1px solid #F6F6F6;\n      margin: 0 20px;\n      padding: 20px 50px; }\n    section.leaveMessage > .leaveMessageContent > .messageList {\n      padding: 0 50px; }\n      section.leaveMessage > .leaveMessageContent > .messageList > li {\n        border-bottom: 1px solid #DDDDDD;\n        position: relative;\n        padding: 20px 20px; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li:last-child {\n          border-bottom: none; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .username {\n          color: #444;\n          cursor: pointer;\n          font-size: 18px;\n          line-height: 20px;\n          transition: all 0.2s; }\n          section.leaveMessage > .leaveMessageContent > .messageList > li > .username:hover {\n            color: #E8676B; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .leaveMessageContent {\n          font-size: 16px;\n          line-height: 16px;\n          margin-top: 10px;\n          color: #555; }\n        section.leaveMessage > .leaveMessageContent > .messageList > li > .time {\n          position: absolute;\n          top: 25px;\n          right: 30px;\n          color: #999;\n          font-size: 14px; }\n    section.leaveMessage > .leaveMessageContent > form {\n      margin: 0 20px;\n      padding: 20px 50px 50px;\n      border-top: 1px solid #F6F6F6;\n      display: flex; }\n      section.leaveMessage > .leaveMessageContent > form > input {\n        padding: 6px 10px;\n        background-color: #F6F6F6;\n        color: #1a1a1a;\n        font-size: 16px;\n        line-height: 20px;\n        font-weight: 400;\n        outline: none;\n        border-radius: 4px;\n        border: 1px solid #ccc;\n        transition: all 0.2s; }\n      section.leaveMessage > .leaveMessageContent > form > .username {\n        max-width: 10%;\n        margin-right: 1%; }\n      section.leaveMessage > .leaveMessageContent > form > .content {\n        min-width: 75%; }\n      section.leaveMessage > .leaveMessageContent > form > .submit {\n        color: #FFF;\n        background-color: rgba(232, 103, 107, 0.5);\n        border: none;\n        margin-left: 10px;\n        font-size: 16px;\n        padding: 0 10px;\n        cursor: not-allowed; }\n        section.leaveMessage > .leaveMessageContent > form > .submit.active {\n          background-color: rgba(232, 103, 107, 0.9);\n          cursor: pointer; }\n      section.leaveMessage > .leaveMessageContent > form > .content:focus,\n      section.leaveMessage > .leaveMessageContent > form > .username:focus {\n        border: 1px solid #3d4451;\n        background-color: #fff; }\n", ""]);
 
 // exports
 

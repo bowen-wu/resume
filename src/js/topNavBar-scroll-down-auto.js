@@ -1,13 +1,13 @@
-export default function(){
+export default function () {
     let view = View("#topNavBar")
     let controller = Controller({
-        init: function(view){},
-        bindEvents: function(){
+        init(view) { },
+        bindEvents() {
             setTimeout(() => {
                 this.normal()
-            },2500)
+            }, 2500)
         },
-        normal: function(){
+        normal() {
             this.view.classList.add('normally')
         }
     })

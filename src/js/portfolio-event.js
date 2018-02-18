@@ -1,14 +1,7 @@
 export default function () {
     let view = View('.portfolio')
     let controller = Controller({
-        portfolioAll: null,
-        portfolioFrame: null,
-        portfolioProtogenesis: null,
-        wrapper: null,
-        portfolioBar: null,
-        swiper: null,
-        codeLink: null,
-        init: function () {
+        init() {
             this.portfolioAll = view.querySelector('#portfolioAll')
             this.portfolioFrame = view.querySelector('#portfolioFrame')
             this.portfolioProtogenesis = view.querySelector('#portfolioProtogenesis')
@@ -17,7 +10,7 @@ export default function () {
             this.codeLink = view.querySelectorAll('.swiper-container .githubLink')
             this.swiper = window.selfSwiper()
         },
-        bindEvents: function () {
+        bindEvents() {
             this.portfolioAll.onclick = () => {
                 this.changeClassName('sliderBarStateFirst')
             }
@@ -29,26 +22,23 @@ export default function () {
             }
             this.wrapper.onmouseenter = () => {
                 this.playStatus('stop')
-                // console.log(this.swiper.activeIndex)
                 this.active(this.swiper.activeIndex)
-                // console.log(2)
             }
             this.wrapper.onmouseleave = () => {
                 this.playStatus('start')
                 this.deactive(this.swiper.activeIndex)
             }
         },
-        changeClassName: function(className){
+        changeClassName(className) {
             this.portfolioBar.className = `sliderBar-inner ${className}`
         },
-        playStatus: function(status){
+        playStatus(status) {
             this.swiper.autoplay[status]()
         },
-        active: function(index){
-            // console.log(this.codeLink)
+        active(index) {
             this.codeLink[index].classList.add('active')
         },
-        deactive: function(index){
+        deactive(index) {
             this.codeLink[index].classList.remove('active')
         }
     })

@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>吴博文</title>
     <link rel="stylesheet" href="//cdn.bootcss.com/Swiper/4.1.0/css/swiper.min.css">
+    <link rel="stylesheet" href="./css/default.css">
     <script src="//at.alicdn.com/t/font_521534_fb1if5ls0y17cik9.js"></script>
+    <script src="./js/base/View.js"></script>
+    <script src="./js/base/Model.js"></script>
+    <script src="./js/base/Controller.js"></script>
 </head>
 <body>
     <div id="loading" class="loading-outer">
         <div class="loading"></div>
     </div>
+    <script src="./js/loading.js"></script>
     <div id="topNavBar" class="topNavBar clearfix">
         <div class="topNavBar-inner">
             <a class="logo" href="#" alt="logo">
@@ -255,19 +260,31 @@
             <div class="countMessage"><span id="countMessage"></span>条留言</div>
             <ol id="messageList" class="messageList"></ol>
             <form>
-                <input id="leaveMessageUsername" class="username" type="text" name="username" placeholder="姓名">
-                <input id="leaveMessageContent" class="content" type="text" name="content" placeholder="写下您的留言...">
+                <input id="leaveMessageUsername" class="username" type="text" name="username" placeholder="姓名" autocomplete="off">
+                <input id="leaveMessageContent" class="content" type="text" name="content" placeholder="写下您的留言..." autocomplete="off">
                 <input id="leaveMessageSubmit" class="submit" type="submit" disabled value="留言">
             </form>
         </div>
     </section>
     <section data-scroll id="websiteOther"></section>
 
-
     <script src="//cdn.bootcss.com/tween.js/r14/Tween.min.js"></script>
     <script src="//cdn.bootcss.com/Swiper/4.1.0/js/swiper.min.js"></script>
     <script src="//cdn1.lncld.net/static/js/3.5.0/av-min.js"></script>
     <script src="./js/bundle.js"></script>
+
+
+    <!-- 模块化 -->
+
+    <!-- <script src="./js/topNavBar-sticky+autoScrollDown.js"></script>
+    <script src="./js/topNavBar-ul-click-scroll.js"></script>
+    <script src="./js/websiteAbout-scroll-up-auto.js"></script>
+    <script src="./js/portfolio-init-swiper.js"></script>
+    <script src="./js/portfolio-event.js"></script> -->
+    <!-- <script src="./js/leaveMessage-system-database.js"></script> -->
+
+    <!-- <script src="./js/auto-slide-up.js"></script> -->
+    <!-- <script src="./js/leaveMessage-once.js"></script>  -->
     
 
 

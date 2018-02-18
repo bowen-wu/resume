@@ -1,0 +1,21 @@
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin widthHeight($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin PseudoEle {
+    content: '';
+    display: block;
+}
+
+@mixin posTopLeft($type, $top, $left) {
+    position: $type;
+    top: $top;
+    left: $left;
+}

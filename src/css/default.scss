@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #efefef;
+    margin-bottom: 500px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+@import './mixin.scss';
+
+.loading-outer {
+    @include flexCenter;
+    @include widthHeight(100%, 100%);
+    @include posTopLeft(fixed, 0, 0);
+    background: #fff;
+    z-index: 2;
+    transition: all 1s;
+    &.active {
+        display: none;
+    }
+    .loading {
+        @include widthHeight(100px, 100px);
+        @include flexCenter;
+        &::before,
+        &::after {
+            @include PseudoEle;
+            @include posTopLeft(absolute, none, none);
+            background-color: #AFAFAF;
+            border-radius: 50%;
+            animation: loadingAnimation 1.8s linear infinite;
+        }
+        &::after {
+            animation-delay: 0.9s;
+        }
+    }
+}
+
+@keyframes loadingAnimation {
+    0% {
+        @include widthHeight(0, 0);
+        opacity: 1;
+    }
+    100% {
+        @include widthHeight(80px, 80px);
+        opacity: 0;
+    }
+}
